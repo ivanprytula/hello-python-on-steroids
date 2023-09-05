@@ -1,13 +1,41 @@
-.vscode/
-.idea/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
 
-.env
+# celery beat schedule file
+celerybeat-schedule
 
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Unit test / coverage reports
+htmlcov/
+
+# Environments
+venv/
 .venv/
 
+# Django stuff:
+db.sqlite3
+staticfiles/
+
+# Sphinx documentation
+docs/_build/
+
+# mypy
 .mypy_cache/
+
+### IDEs
+.vscode/*
+.idea/
+
+# Envs
+.env
+
+### Project
+
 .ruff_cache/
-__pycache__/
 
 diagrams/
 # To ignore the "directory" only in the root of your Git repository - add leading slash
