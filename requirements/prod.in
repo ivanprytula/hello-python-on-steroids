@@ -1,0 +1,9 @@
+# This is a source requirements source file. Edit this file using the compatible release syntax specified in
+# PEP 440 (https://www.python.org/dev/peps/pep-0440/#compatible-release). After making edits
+# in order to compile a new requirement files run:
+# pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/prod_lock.txt requirements/prod.in
+
+Django~=4.2
+gunicorn==21.2.0
+environs[django]~=9.3
+psycopg2

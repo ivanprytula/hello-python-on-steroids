@@ -33,6 +33,10 @@ python manage.py startapp <app_name>
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+
+pip-compile --upgrade --generate-hashes --output-file requirements/dev_lock.txt requirements/dev.in
+pip-compile --upgrade --generate-hashes --output-file requirements/prod_lock.txt requirements/prod.in
+
 ```
 
 ## Used resources
