@@ -13,9 +13,19 @@ Yet (my) another mega project about Python and Django DX.
 TOC
 
 - [Hello Python on steroids](#hello-python-on-steroids)
-  - [Django "classic" set of commands](#django-classic-set-of-commands)
+  - [Features overview](#features-overview)
+  - [Setup](#setup)
+    - [Django "classic" set of commands](#django-classic-set-of-commands)
+  - [Used resources](#used-resources)
+    - [Tutorials](#tutorials)
+    - [Documentation/cheatsheet](#documentation-cheatsheet)
+    - [People to read](#people-to-read)
 
-## Django "classic" set of commands
+## Features overview
+
+## Setup
+
+### Django "classic" set of commands
 
 ```shell
 django-admin startproject <django_project> .
@@ -27,5 +37,17 @@ python manage.py runserver
 
 ## Used resources
 
+### Tutorials
+
 - <https://djangoforbeginners.com/initial-setup/>
+- ...
+
+### Documentation, cheatsheet
+
 - <https://ccbv.co.uk/>
+- ...
+
+### People to read
+
+- [jacobian, co-creator of Django](<https://jacobian.org/>)
+- ...

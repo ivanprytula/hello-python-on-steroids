@@ -7,4 +7,8 @@ from django.views.generic import TemplateView
 
 
 class HomePageView(TemplateView):
-    template_name = "home.html"
+    template_name = "pages/home.html"
+
+
+class AboutPageView(TemplateView):  # new
+    template_name = "pages/about.html"
