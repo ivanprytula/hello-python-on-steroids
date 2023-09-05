@@ -26,6 +26,9 @@ docs/_build/
 # mypy
 .mypy_cache/
 
+# Linters, formatters
+.ruff_cache/
+
 ### IDEs
 .vscode/*
 .idea/
@@ -33,10 +36,9 @@ docs/_build/
 # Envs
 .env
 
-### Project
-
-.ruff_cache/
+### -------------------- Project itself --------------------------
 
 diagrams/
 # To ignore the "directory" only in the root of your Git repository - add leading slash
 sandbox/
+public/static/dist

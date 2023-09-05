@@ -116,9 +116,11 @@ runs:
 run-plus:
 	python manage.py runserver_plus
 
-
 pre-commit-all:
 	pre-commit run --all-files
 
 docs-serve:
 	mkdocs serve --dev-addr 127.0.0.1:8002
+
+
+# Frontend

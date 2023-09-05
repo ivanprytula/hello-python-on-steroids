@@ -81,14 +81,12 @@ EOF
 python manage.py migrate
 python manage.py runserver
 python manage.py makemigrations
-
-
-
 ```
 
 ```shell
 tree -a -L 2 -I .venv
-
+npm run build
+npm run dev
 ```
 
 ## Used resources

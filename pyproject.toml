@@ -45,11 +45,11 @@ plugins = [
 
 
 [tool.django-stubs]
-django_settings_module = "config.settings.test_runner"
+django_settings_module = "django_project.settings.test_runner"
 
 
 [tool.pytest.ini_options]
-addopts = "--nomigrations --ds config.settings.test_runner --cov-config=config/coverage.ini"
+addopts = "--nomigrations --ds django_project.settings.test_runner --cov-config=config/coverage.ini"
 # Set the default behavior for warnings to error, so it forces you to look into fixing them
 filterwarnings = [
     "error",

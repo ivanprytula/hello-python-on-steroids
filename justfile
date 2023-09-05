@@ -148,12 +148,6 @@ open_coverage:
     rm -f .coverage
     rm -rf htmlcov
 
-# Remove extra Django Base Site files not needed in a new project
-@remove_extra_files:
-    rm -f LICENSE.md
-    rm -f README.md
-    rm -r scripts/start_new_project
-
 # Remove cached Python bytecode
 @remove_py_cache:
     rm -r `find . -name '__pycache__' -type d`
@@ -168,7 +162,7 @@ open_coverage:
 
 # Stop all docker-compose services
 @stop:
-    docker-compose down -t 0
+    docker compose down -t 0
 
 # Run the Django test runner without coverage
 @test:
