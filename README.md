@@ -23,6 +23,43 @@ TOC
 
 ## Features overview
 
+### Best Practices
+
+- [Environs](https://github.com/sloria/environs) - Used for managing environment variables
+- [Docker](https://www.docker.com/) - Docker Compose for development and a multi-stage Dockerfile for production ready Docker image
+- [Pip Tools](https://github.com/jazzband/pip-tools/) - Used to maintain python requirements
+- [Just](https://github.com/casey/just) - Popular tool for running common commands in containers (`make` equivalent)
+- `make` - with 'classic' Makefile for commands within virtualenv
+
+### Popular Python and Django Packages
+
+- [Django 4.2](https://www.djangoproject.com/) - Latest version of Django
+- [Celery](http://docs.celeryproject.org/) - Most popular task runner for running asynchronous tasks in the background
+- [Custom User Model][custom_user_model] - Custom user model so that the user model can be easily extended
+- [Django Allauth](http://www.intenct.nl/projects/django-allauth/) - The most popular package for adding authentication
+  workflows to a Django project
+
+### Python Testing Tools
+
+- [Pytest](https://docs.pytest.org/) - The most popular Python test runner in the Python community
+- [Pytest Django](https://pytest-django.readthedocs.io/en/latest/index.html) - A Django plugin for Pytest
+- [Pytest-cov](https://pytest-cov.readthedocs.io) - Adds code coverage to tests
+- [pre-commit](https://pre-commit.com/) - A framework for managing and maintaining multi-language pre-commit hooks
+<!-- - [Model Bakery](https://github.com/model-bakers/model_bakery) - A faster way to create model instances for tests -->
+
+### Code Quality, Formatting, and Linting Tools
+
+- [Black](https://black.readthedocs.io/en/stable/) - Automatic Python code formatting
+- [Ruff](https://github.com/charliermarsh/ruff) - Extra Python linting and lighting fast because it's written in Rust!
+- [Mypy](http://mypy-lang.org/) - Python Type checking
+<!-- - [dj Lint](https://djlint.com/) - Automatic Django HTML template formatting and linting -->
+- [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar) - A toolbar for debugging and
+  optimizing Django queries
+- [Bandit](https://bandit.readthedocs.io/) - Automatic security checking
+- [pip-audit](https://pypi.org/project/pip-audit/) - tool for scanning Python environments for known vulnerabilities
+<!-- - [Stylelint](https://stylelint.io/) - Automatic Sass formatting and linting -->
+<!-- - [Eslint](https://eslint.org/) - Automatic Javascript formatting and linting -->
+
 ## Setup
 
 ### Django "classic" set of commands
@@ -44,6 +81,9 @@ pip-compile --upgrade --generate-hashes --output-file requirements/prod_lock.txt
 ### Tutorials
 
 - <https://djangoforbeginners.com/initial-setup/>
+- <https://www3.nd.edu/~zxu2/acms60212-40212/Makefile.pdf>
+- <https://cheat.readthedocs.io/en/latest/index.html>
+- <https://fabien.herfray.org/posts/mastering-postgres-indexes-in-10-minutes/>
 - ...
 
 ### Documentation, cheatsheet

@@ -4,6 +4,6 @@
 # pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/prod_lock.txt requirements/prod.in
 
 Django~=4.2
-gunicorn==21.2.0
 environs[django]~=9.3
-psycopg2
+psycopg~=3.1
+gunicorn~=21.2
