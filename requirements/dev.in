@@ -16,12 +16,15 @@ pytest-django
 pytest-xdist
 pytest-cov
 pytest-repeat
+hypothesis
+selenium
 Werkzeug[watchdog]
 pip-tools
 pip-audit
 ipython
 pre-commit
 mypy
+typeguard
 ruff
 flake8
 black

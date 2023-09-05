@@ -100,6 +100,8 @@ lock-deps-prod:
 audit-deps-dev:
 	pip-audit --requirement requirements/dev.in
 
+pcau:
+	pre-commit autoupdate
 
 # manage.py commands and extras from django_extensions
 mm:

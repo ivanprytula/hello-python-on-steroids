@@ -45,20 +45,21 @@ TOC
 - [Pytest Django](https://pytest-django.readthedocs.io/en/latest/index.html) - A Django plugin for Pytest
 - [Pytest-cov](https://pytest-cov.readthedocs.io) - Adds code coverage to tests
 - [pre-commit](https://pre-commit.com/) - A framework for managing and maintaining multi-language pre-commit hooks
-<!-- - [Model Bakery](https://github.com/model-bakers/model_bakery) - A faster way to create model instances for tests -->
 
 ### Code Quality, Formatting, and Linting Tools
 
 - [Black](https://black.readthedocs.io/en/stable/) - Automatic Python code formatting
 - [Ruff](https://github.com/charliermarsh/ruff) - Extra Python linting and lighting fast because it's written in Rust!
 - [Mypy](http://mypy-lang.org/) - Python Type checking
+- [typeguard](https://pypi.org/project/typeguard/) - Run-time type checker for Python
 - [dj Lint](https://djlint.com/) - Automatic Django HTML template formatting and linting
 - [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar) - A toolbar for debugging and
   optimizing Django queries
+- django-silk
 - [Bandit](https://bandit.readthedocs.io/) - Automatic security checking
 - [pip-audit](https://pypi.org/project/pip-audit/) - tool for scanning Python environments for known vulnerabilities
-<!-- - [Stylelint](https://stylelint.io/) - Automatic Sass formatting and linting -->
-<!-- - [Eslint](https://eslint.org/) - Automatic Javascript formatting and linting -->
+- [Stylelint](https://stylelint.io/) - Automatic Sass formatting and linting
+- [Eslint](https://eslint.org/) - Automatic Javascript formatting and linting
 
 ## Setup
 
@@ -67,10 +68,26 @@ TOC
 ```shell
 django-admin startproject <django_project> .
 python manage.py startapp <app_name>
-python manage.py makemigrations
+
+export SECRET_KEY=$(python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')
+cat > .env <<EOF
+DEBUG=on
+SECRET_KEY='$SECRET_KEY'
+DATABASE_URL=postgres://postgres:@db:5432/postgres
+INTERNAL_IPS=127.0.0.1,0.0.0.0
+EOF
+
+
 python manage.py migrate
 python manage.py runserver
+python manage.py makemigrations
 
+
+
+```
+
+```shell
+tree -a -L 2 -I .venv
 
 ```
 

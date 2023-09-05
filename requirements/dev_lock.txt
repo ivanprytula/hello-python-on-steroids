@@ -116,7 +116,11 @@ async-timeout==4.0.3 \
 attrs==23.1.0 \
     --hash=sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04 \
     --hash=sha256:6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015
-    # via aiohttp
+    # via
+    #   aiohttp
+    #   hypothesis
+    #   outcome
+    #   trio
 autopep8==2.0.4 \
     --hash=sha256:067959ca4a07b24dbd5345efa8325f5f58da4298dab0dde0443d5ed765de80cb \
     --hash=sha256:2913064abd97b3419d1cc83ea71f042cb821f87e45b9c88cad5ad3c4ea87fe0c
@@ -172,7 +176,9 @@ cachecontrol==0.13.1 \
 certifi==2023.7.22 \
     --hash=sha256:539cc1d13202e33ca466e88b2807e29f4c13049d6d87031a3c110744495cb082 \
     --hash=sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9
-    # via requests
+    # via
+    #   requests
+    #   selenium
 cfgv==3.4.0 \
     --hash=sha256:b7265b1f29fd3316bfcd2b330d63d024f2bfd8bcb8b0272f8e19a504856c48f9 \
     --hash=sha256:e52591d4c5f5dead8e0f673fb16db7949d2cfb3f7da4582893288f0ded8fe560
@@ -327,6 +333,10 @@ coverage==7.3.0 \
     # via
     #   django-coverage-plugin
     #   pytest-cov
+crispy-bootstrap5==0.7 \
+    --hash=sha256:0745a67199619149b7feca87dab7a45664876ed50fb582b38fd2aeb3f8a8d869 \
+    --hash=sha256:f3ff1ef5cb379fe80b1b02e245008f276444098a4bdb8d855bed84c623798a85
+    # via -r requirements/prod.in
 cssbeautifier==1.14.9 \
     --hash=sha256:2da432472f68170eb854aff97b16a24721f5090ee36af2e31199590a89e7f71f
     # via djlint
@@ -363,8 +373,10 @@ django==4.2.5 \
     --hash=sha256:b6b2b5cae821077f137dc4dade696a1c2aa292f892eca28fa8d7bfdf2608ddd4
     # via
     #   -r requirements/prod.in
+    #   crispy-bootstrap5
     #   dj-database-url
     #   django-browser-reload
+    #   django-crispy-forms
     #   django-debug-toolbar
     #   django-extensions
     #   django-filter
@@ -382,6 +394,12 @@ django-coverage-plugin==3.1.0 \
     --hash=sha256:223d34bf92bebadcb8b7b89932480e41c7bd98b44a8156934488fbe7f4a71f99 \
     --hash=sha256:eb0ea8ffdb0db11a02994fc99be6500550efb496c350d709f418ff3d8e553a67
     # via -r requirements/dev.in
+django-crispy-forms==2.0 \
+    --hash=sha256:90193b068bf948d9c68449bc8260afed1a8e2afe11ee0bac8c4ebfaeb175b322 \
+    --hash=sha256:d1d4e585929058a9ab3b797666ea5b69320b9ba7937f9d146d32173246a6fd13
+    # via
+    #   -r requirements/prod.in
+    #   crispy-bootstrap5
 django-debug-toolbar==4.2.0 \
     --hash=sha256:af99128c06e8e794479e65ab62cc6c7d1e74e1c19beb44dcbf9bad7a9c017327 \
     --hash=sha256:bc7fdaafafcdedefcc67a4a5ad9dac96efd6e41db15bc74d402a54a2ba4854dc
@@ -416,6 +434,10 @@ environs==9.5.0 \
     --hash=sha256:1e549569a3de49c05f856f40bce86979e7d5ffbbc4398e7f338574c220189124 \
     --hash=sha256:a76307b36fbe856bdca7ee9161e6c466fd7fcffc297109a118c59b54e27e30c9
     # via -r requirements/prod.in
+exceptiongroup==1.1.3 \
+    --hash=sha256:097acd85d473d75af5bb98e41b61ff7fe35efe6675e4f9370ec6ec5126d160e9 \
+    --hash=sha256:343280667a4585d195ca1cf9cef84a4e178c4b6cf2274caef9859782b567d5e3
+    # via trio-websocket
 execnet==2.0.2 \
     --hash=sha256:88256416ae766bc9e8895c76a87928c0012183da3cc4fc18016e6f050e025f41 \
     --hash=sha256:cc59bc4423742fd71ad227122eb0dd44db51efb3dc4095b45ac9a08c770096af
@@ -523,6 +545,10 @@ gunicorn==21.2.0 \
     --hash=sha256:3213aa5e8c24949e792bcacfc176fef362e7aac80b76c56f6b5122bf350722f0 \
     --hash=sha256:88ec8bff1d634f98e61b9f65bc4bf3cd918a90806c6f5c48bc5603849ec81033
     # via -r requirements/prod.in
+h11==0.14.0 \
+    --hash=sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d \
+    --hash=sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
+    # via wsproto
 html-tag-names==0.1.2 \
     --hash=sha256:04924aca48770f36b5a41c27e4d917062507be05118acb0ba869c97389084297 \
     --hash=sha256:eeb69ef21078486b615241f0393a72b41352c5219ee648e7c61f5632d26f0420
@@ -535,6 +561,10 @@ html5lib==1.1 \
     --hash=sha256:0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d \
     --hash=sha256:b2e5b40261e20f354d198eae92afc10d750afb487ed5e50f9c4eaf07c184146f
     # via pip-audit
+hypothesis==6.84.1 \
+    --hash=sha256:335a15c07bb1b4a94950e69ccb2089b0b7b5424ba2f537e01dc6185932233ba2 \
+    --hash=sha256:65b8309f70ef373cc405a1663176804038144a1c7e9296f7077c50f3b4e3ccd5
+    # via -r requirements/dev.in
 identify==2.5.27 \
     --hash=sha256:287b75b04a0e22d727bc9a41f0d4f3c1bcada97490fa6eabb5b28f0e9097e733 \
     --hash=sha256:fdb527b2dfe24602809b2201e033c2a113d7bdf716db3ca8e3243f735dcecaba
@@ -544,6 +574,7 @@ idna==3.4 \
     --hash=sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2
     # via
     #   requests
+    #   trio
     #   yarl
 iniconfig==2.0.0 \
     --hash=sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3 \
@@ -927,6 +958,10 @@ nodeenv==1.8.0 \
     --hash=sha256:d51e0c37e64fbf47d017feac3145cdbb58836d7eee8c6f6d3b6880c5456227d2 \
     --hash=sha256:df865724bb3c3adc86b3876fa209771517b0cfe596beff01a92700e0e8be4cec
     # via pre-commit
+outcome==1.2.0 \
+    --hash=sha256:6f82bd3de45da303cf1f771ecafa1633750a358436a8bb60e06a1ceb745d2672 \
+    --hash=sha256:c4ab89a56575d6d38a05aa16daeaa333109c1f96167aba8901ab18b6b5e0f7f5
+    # via trio
 packageurl-python==0.11.2 \
     --hash=sha256:01fbf74a41ef85cf413f1ede529a1411f658bda66ed22d45d27280ad9ceba471 \
     --hash=sha256:799acfe8d9e6e3534bbc19660be97d5b66754bc033e62c39f1e2f16323fcfa84
@@ -1060,6 +1095,11 @@ pyproject-hooks==1.0.0 \
     --hash=sha256:283c11acd6b928d2f6a7c73fa0d01cb2bdc5f07c57a2eeb6e83d5e56b97976f8 \
     --hash=sha256:f271b298b97f5955d53fb12b72c1fb1948c22c1a6b70b315c54cedaca0264ef5
     # via build
+pysocks==1.7.1 \
+    --hash=sha256:08e69f092cc6dbe92a0fdd16eeb9b9ffbc13cadfe5ca4c7bd92ffb078b293299 \
+    --hash=sha256:2725bd0a9925919b9b51739eea5f9e2bae91e83288108a9ad338b2e3a4435ee5 \
+    --hash=sha256:3f8804571ebe159c380ac6de37643bb4685970655d3bba243530d6558b799aa0
+    # via urllib3
 pytest==7.4.1 \
     --hash=sha256:2f2301e797521b23e4d2585a0a3d7b5e50fdddaaf7e7d6773ea26ddb17c213ab \
     --hash=sha256:460c9a59b14e27c602eb5ece2e47bec99dc5fc5f6513cf924a7d03a578991b1f
@@ -1282,6 +1322,10 @@ ruff==0.0.287 \
     --hash=sha256:d3a810a79b8029cc92d06c36ea1f10be5298d2323d9024e1d21aedbf0a1a13e5 \
     --hash=sha256:e9843e5704d4fb44e1a8161b0d31c1a38819723f0942639dfeb53d553be9bfb5
     # via -r requirements/dev.in
+selenium==4.12.0 \
+    --hash=sha256:95be6aa449a0ab4ac1198bb9de71bbe9170405e04b9752f4b450dc7292a21828 \
+    --hash=sha256:b2c48b1440db54a0653300d9955f5421390723d53b36ec835e18de8e13bbd401
+    # via -r requirements/dev.in
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
     --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
@@ -1295,10 +1339,17 @@ smmap==5.0.0 \
     --hash=sha256:2aba19d6a040e78d8b09de5c57e96207b09ed71d8e55ce0959eeee6c8e190d94 \
     --hash=sha256:c840e62059cd3be204b0c9c9f74be2c09d5648eddd4580d9314c3ecde0b30936
     # via gitdb
+sniffio==1.3.0 \
+    --hash=sha256:e60305c5e5d314f5389259b7f22aaa33d8f7dee49763119234af3755c55b9101 \
+    --hash=sha256:eecefdce1e5bbfb7ad2eeaabf7c1eeb404d7757c379bd1f7e5cce9d8bf425384
+    # via trio
 sortedcontainers==2.4.0 \
     --hash=sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88 \
     --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
-    # via cyclonedx-python-lib
+    # via
+    #   cyclonedx-python-lib
+    #   hypothesis
+    #   trio
 sqlparse==0.4.4 \
     --hash=sha256:5430a4fe2ac7d0f93e66f1efc6e1338a41884b7ddf2a350cedd20ccc4d9d28f3 \
     --hash=sha256:d446183e84b8349fa3061f0fe7f06ca94ba65b426946ffebe6e3e8295332420c
@@ -1332,6 +1383,20 @@ traitlets==5.9.0 \
     # via
     #   ipython
     #   matplotlib-inline
+trio==0.22.2 \
+    --hash=sha256:3887cf18c8bcc894433420305468388dac76932e9668afa1c49aa3806b6accb3 \
+    --hash=sha256:f43da357620e5872b3d940a2e3589aa251fd3f881b65a608d742e00809b1ec38
+    # via
+    #   selenium
+    #   trio-websocket
+trio-websocket==0.10.3 \
+    --hash=sha256:1a748604ad906a7dcab9a43c6eb5681e37de4793ba0847ef0bc9486933ed027b \
+    --hash=sha256:a9937d48e8132ebf833019efde2a52ca82d223a30a7ea3e8d60a7d28f75a4e3a
+    # via selenium
+typeguard==4.1.3 \
+    --hash=sha256:5b7453b1e3b35fcfe2d62fa4ec500d05e6f2f2eb46f4126ae964677fcc384fff \
+    --hash=sha256:7d4264cd631ac1157c5bb5ec992281b4f1e2ba7a35db91bc15f442235e244803
+    # via -r requirements/dev.in
 typing-extensions==4.7.1 \
     --hash=sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36 \
     --hash=sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2
@@ -1339,10 +1404,13 @@ typing-extensions==4.7.1 \
     #   dj-database-url
     #   mypy
     #   psycopg
+    #   typeguard
 urllib3==2.0.4 \
     --hash=sha256:8d22f86aae8ef5e410d4f539fde9ce6b2113a001bb4d189e0aed70642d602b11 \
     --hash=sha256:de7df1803967d2c2a98e4b11bb7d6bd9210474c46e8a0401514e3a42a75ebde4
-    # via requests
+    # via
+    #   requests
+    #   selenium
 virtualenv==20.24.4 \
     --hash=sha256:29c70bb9b88510f6414ac3e55c8b413a1f96239b6b789ca123437d5e892190cb \
     --hash=sha256:772b05bfda7ed3b8ecd16021ca9716273ad9f4467c801f27e83ac73430246dca
@@ -1475,6 +1543,10 @@ wrapt==1.15.0 \
     --hash=sha256:fbec11614dba0424ca72f4e8ba3c420dba07b4a7c206c8c8e4e73f2e98f4c559 \
     --hash=sha256:fd69666217b62fa5d7c6aa88e507493a34dec4fa20c5bd925e4bc12fce586639
     # via astroid
+wsproto==1.2.0 \
+    --hash=sha256:ad565f26ecb92588a3e43bc3d96164de84cd9902482b130d0ddbaa9664a85065 \
+    --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
+    # via trio-websocket
 yarl==1.9.2 \
     --hash=sha256:04ab9d4b9f587c06d801c2abfe9317b77cdf996c65a90d5e84ecc45010823571 \
     --hash=sha256:066c163aec9d3d073dc9ffe5dd3ad05069bcb03fcaab8d221290ba99f9f69ee3 \
