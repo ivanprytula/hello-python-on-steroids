@@ -10,6 +10,12 @@ pipdeptree
 django-debug-toolbar
 django-extensions
 django-browser-reload  # https://pypi.org/project/django-browser-reload/
+django-silk
+django-coverage-plugin
+pytest-django
+pytest-xdist
+pytest-cov
+pytest-repeat
 Werkzeug[watchdog]
 pip-tools
 pip-audit
@@ -17,10 +23,12 @@ ipython
 pre-commit
 mypy
 ruff
+flake8
 black
 isort
 bandit[toml]
 pylint
+djlint
 mkdocs-include-markdown-plugin
 mkdocs-linkcheck
 mkdocs-material

@@ -52,7 +52,7 @@ TOC
 - [Black](https://black.readthedocs.io/en/stable/) - Automatic Python code formatting
 - [Ruff](https://github.com/charliermarsh/ruff) - Extra Python linting and lighting fast because it's written in Rust!
 - [Mypy](http://mypy-lang.org/) - Python Type checking
-<!-- - [dj Lint](https://djlint.com/) - Automatic Django HTML template formatting and linting -->
+- [dj Lint](https://djlint.com/) - Automatic Django HTML template formatting and linting
 - [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar) - A toolbar for debugging and
   optimizing Django queries
 - [Bandit](https://bandit.readthedocs.io/) - Automatic security checking
@@ -71,8 +71,6 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 
-pip-compile --upgrade --generate-hashes --output-file requirements/dev_lock.txt requirements/dev.in
-pip-compile --upgrade --generate-hashes --output-file requirements/prod_lock.txt requirements/prod.in
 
 ```
 

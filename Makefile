@@ -86,6 +86,8 @@ help:
 # Project's commands
 # --------------------------------------------------------------------------------------
 
+# Dependencies management
+
 install-deps-dev:
 	pip install -r requirements/dev_lock.txt
 
@@ -93,7 +95,11 @@ lock-deps-dev:
 	pip-compile --upgrade --generate-hashes --strip-extras --verbose --output-file requirements/dev_lock.txt requirements/dev.in
 
 lock-deps-prod:
-	pip-compile --upgrade --generate-hashes --strip-extras --verbose --output-file requirements/prod_lock.txt requirements/prod.in
+	pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/prod_lock.txt requirements/prod.in
+
+audit-deps-dev:
+	pip-audit --requirement requirements/dev.in
+
 
 # manage.py commands and extras from django_extensions
 mm:
@@ -108,8 +114,6 @@ runs:
 run-plus:
 	python manage.py runserver_plus
 
-audit-deps-dev:
-	pip-audit --requirement requirements/dev.in
 
 pre-commit-all:
 	pre-commit run --all-files
