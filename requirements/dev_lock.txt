@@ -340,9 +340,9 @@ crispy-bootstrap5==0.7 \
 cssbeautifier==1.14.9 \
     --hash=sha256:2da432472f68170eb854aff97b16a24721f5090ee36af2e31199590a89e7f71f
     # via djlint
-cyclonedx-python-lib==4.1.0 \
-    --hash=sha256:28b8c6c96372345c61464561b3040ede38d1c82026f706d87e8728ba5f7f4ddb \
-    --hash=sha256:7996657f9788758ed05bea8c247e3e6ffcccfbc48818cd34795a4ae094b307bd
+cyclonedx-python-lib==4.2.1 \
+    --hash=sha256:adcb074d00e5171754fc2f04269987cdf11342d2dbce2b9eeee7ebb218b1ed94 \
+    --hash=sha256:b6b3818d48ed932545d3c5c819cbfe9a1fe452fba363388d2005ba9b054c81cb
     # via pip-audit
 decorator==5.1.1 \
     --hash=sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330 \
