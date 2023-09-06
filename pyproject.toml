@@ -1,5 +1,44 @@
+# ==== Pytest ====
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--ds=django_project.settings.test_runner --reuse-db --cov-config=config/coverage.ini --cov=config_core/ --cov-branch"
+python_files = [
+    "test_*.py",
+]
+required_plugins = ["pytest-django", "pytest-xdist"]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
+markers = [
+    # dummy markers for testing
+    "custom_mark: some information of your mark",
+    "foo",
+    "bar",
+    # conftest.py reorders tests moving slow ones to the end of the list
+    "slow",
+]
+
+
+# ==== Coverage ====
+[tool.coverage.run]
+# include = ["co/**"]
+omit = [
+    ".venv/*",
+    "manage.py",
+    "*/tests/*",
+    "*migrations*",
+]
+plugins = ["django_coverage_plugin"]
+branch = true
+source = ["."]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+
 [tool.black]
-line-length = 120
+line-length = 119
 target-version = ['py311']
 skip-string-normalization = false
 exclude = '''
@@ -12,12 +51,16 @@ exclude = '''
 '''
 
 [tool.isort]
-line_length = 120
+profile = "black"
+line_length = 119
 multi_line_output = 5
 balanced_wrapping = true
 known_django = 'django'
 sections = 'FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER'
-skip = 'node_modules'
+known_first_party = [
+    "django_project",
+]
+skip = [".venv/", "venv", "node_modules"]
 
 
 [tool.mypy]
@@ -48,27 +91,9 @@ plugins = [
 django_settings_module = "django_project.settings.test_runner"
 
 
-[tool.pytest.ini_options]
-addopts = "--nomigrations --ds django_project.settings.test_runner --cov-config=config/coverage.ini"
-# Set the default behavior for warnings to error, so it forces you to look into fixing them
-filterwarnings = [
-    "error",
-]
-
 [tool.bandit]
 exclude_dirs = ["tests"]
 
-[tool.coverage.run]
-branch = true
-source = ["."]
-omit = [
-    ".venv/*",
-    "manage.py",
-    "*migrations*",
-]
-
-[tool.coverage.html]
-directory = "htmlcov"
 
 [tool.djlint]
 indent = 2
@@ -86,6 +111,7 @@ indent_size=2
 
 [tool.djlint.css]
 indent_size=2
+
 
 [tool.ruff]
 line-length = 120

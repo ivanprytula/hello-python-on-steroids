@@ -16,6 +16,7 @@ pytest-django
 pytest-xdist
 pytest-cov
 pytest-repeat
+chromedriver
 hypothesis
 selenium
 Werkzeug[watchdog]
@@ -30,7 +31,6 @@ flake8
 black
 isort
 bandit[toml]
-pylint
 djlint
 mkdocs-include-markdown-plugin
 mkdocs-linkcheck

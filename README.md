@@ -14,7 +14,7 @@ TOC
 
 - [Hello Python on steroids](#hello-python-on-steroids)
   - [Features overview](#features-overview)
-  - [Setup](#setup)
+  - [Setup and Walkthrough notes](#setup-and-walkthrough-notes)
     - [Django "classic" set of commands](#django-classic-set-of-commands)
   - [Used resources](#used-resources)
     - [Tutorials](#tutorials)
@@ -61,13 +61,26 @@ TOC
 - [Stylelint](https://stylelint.io/) - Automatic Sass formatting and linting
 - [Eslint](https://eslint.org/) - Automatic Javascript formatting and linting
 
-## Setup
+## Setup and Walkthrough notes
+
+1. Lock(pin) Python dependencies with `pip-tools` in requirements/dev.in and requirements/prod.in
+2. Split settings into settings/base + development + production + test.py >> update `manage.py`
+3. Separate environmental variables from code: django-environ (or other lib, e.g. `python-decouple`)
+4. Generate **NEW** SECRET_KEY **before!** applying migrations
+5. Update code according to `manage.py check --deploy` recommendations and <https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/>
+6. On EC2 add Public IPv4 DNS in `ALLOWED_HOSTS`
+7. Run Django dev server with 0.0.0.0:8000
+8. Config Custom TCP inbound rule (in security group of EC2 instance) to allow visit running server only from your IP (while working on the project)
+9. Access the development server over HTTP and/or configure HTTPS.
+10. For production env install Gunicorn and nginx
 
 ### Django "classic" set of commands
 
 ```shell
 django-admin startproject <django_project> .
 python manage.py startapp <app_name>
+
+cp .env.example .env
 
 export SECRET_KEY=$(python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')
 cat > .env <<EOF
