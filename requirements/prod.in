@@ -4,14 +4,21 @@
 # pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/prod_lock.txt requirements/prod.in
 
 Django~=4.2
-environs[django]~=9.3
+django-environ~=0.11
 psycopg~=3.1
+argon2-cffi~=21.3  # https://github.com/hynek/argon2_cffi
 djangorestframework~=3.14
+django-cors-headers~=4.2
+drf-spectacular~=0.26
+whitenoise~=6.5
 gunicorn~=21.2
 django-filter~=23.2
-django-crispy-forms~=2.0
-crispy-bootstrap5~=0.7
-django-allauth~=0.55
-celery~=5.3
-redis~=5.0
+django-crispy-forms~=2.0  # https://github.com/django-crispy-forms/django-crispy-forms
+crispy-bootstrap5~=0.7  # https://github.com/django-crispy-forms/crispy-bootstrap5
+django-allauth~=0.55  # https://github.com/pennersr/django-allauth
+celery~=5.3  # pyup: < 6.0  # https://github.com/celery/celery
+flower~=2.0  # https://github.com/mher/flower
+django-celery-beat~=2.5  # https://github.com/celery/django-celery-beat
+redis~=5.0  # https://github.com/redis/redis-py
 hiredis~=2.2  # needed for Django's native cache and sessions
+django-redis~=5.3  # https://github.com/jazzband/django-redis

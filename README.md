@@ -25,10 +25,10 @@ TOC
 
 ### Best Practices
 
-- [Environs](https://github.com/sloria/environs) - Used for managing environment variables
+- [environs](https://github.com/sloria/environs) - Used for managing environment variables
 - [Docker](https://www.docker.com/) - Docker Compose for development and a multi-stage Dockerfile for production ready Docker image
-- [Pip Tools](https://github.com/jazzband/pip-tools/) - Used to maintain python requirements
-- [Just](https://github.com/casey/just) - Popular tool for running common commands in containers (`make` equivalent)
+- [pip-tools](https://github.com/jazzband/pip-tools/) - Used to maintain python requirements
+- [just](https://github.com/casey/just) - Popular tool for running common commands in containers (`make` equivalent)
 - `make` - with 'classic' Makefile for commands within virtualenv
 
 ### Popular Python and Django Packages
@@ -110,6 +110,7 @@ npm run dev
 - <https://www3.nd.edu/~zxu2/acms60212-40212/Makefile.pdf>
 - <https://cheat.readthedocs.io/en/latest/index.html>
 - <https://fabien.herfray.org/posts/mastering-postgres-indexes-in-10-minutes/>
+- <https://vglushko.github.io/development/2022/12/22/python-dev-environment.html>/home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/conftest.py /home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/__init__.py
 - ...
 
 ### Documentation, cheatsheet

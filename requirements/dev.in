@@ -7,15 +7,16 @@
 -r prod.in
 
 pipdeptree
-django-debug-toolbar
+django-debug-toolbar  # https://github.com/jazzband/django-debug-toolbar
 django-extensions
 django-browser-reload  # https://pypi.org/project/django-browser-reload/
 django-silk
 django-coverage-plugin
-pytest-django
+pytest-django  # https://github.com/pytest-dev/pytest-django
 pytest-xdist
 pytest-cov
 pytest-repeat
+factory-boy  # https://github.com/FactoryBoy/factory_boy
 chromedriver
 hypothesis
 selenium

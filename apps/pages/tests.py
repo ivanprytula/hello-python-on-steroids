@@ -1,6 +1,3 @@
-from django.test import SimpleTestCase
-from django.urls import reverse
-
 """
 Generally speaking,
 - SimpleTestCase is used when a database is unnecessary
@@ -8,6 +5,9 @@ Generally speaking,
 - TransactionTestCase is helpful to directly test database transactions
 - LiveServerTestCase launches a live server thread for testing with browser-based tools like Selenium.
 """
+
+from django.test import SimpleTestCase
+from django.urls import reverse
 
 
 class HomepageTests(SimpleTestCase):
