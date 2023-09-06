@@ -37,7 +37,7 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path("users/", include("price_navigator.users.urls", namespace="users")),
+    path("users/", include("apps.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
     # ...
@@ -46,7 +46,7 @@ urlpatterns = [
 # API URLS
 urlpatterns += [
     # API base url
-    path("api/", include("config.api_router")),
+    path("api/", include("django_project.api_router")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),

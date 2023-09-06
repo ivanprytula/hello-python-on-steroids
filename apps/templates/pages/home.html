@@ -1,13 +1,22 @@
-{% extends "_base.html" %}
+{% extends "layouts/base.html" %}
 
-{% load django_browser_reload %}
+{# djlint:off #}
+{% block title %}
+  Home
+{% endblock title %}
+{# djlint:on #}
+
 
 {% block content %}
-
-<h1>Homepage</h1>
-
+  <div class="jumbotron">
+    <div class="container">
+      <h1>{{ SITE_NAME }}</h1>
+      <p>You've successfully set up a Django base site. Start Coding!</p>
+      <p>
+        <a href="https://django-base-site.readthedocs.org/en/latest/"
+           class="btn btn-primary btn-lg"
+           target="_blank">Read documentation »</a>
+      </p>
+    </div>
+  </div>
 {% endblock content %}
-
-
-
-{% django_browser_reload_script %}

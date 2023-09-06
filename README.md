@@ -224,7 +224,7 @@ python manage.py makemigrations
 
 ```shell
 tree -a -L 2 -I .venv
-npm run build
+npm i
 npm run dev
 ```
 

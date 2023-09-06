@@ -29,6 +29,10 @@ APPS_DIR = BASE_DIR / "apps"
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
 LANGUAGE_CODE = "en-us"
+
+SITE_ID = 1
+SITE_NAME = "Hello Python on steroids"
+
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
@@ -85,10 +89,12 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
-    # "drf_spectacular",
+    "drf_spectacular",
     "django_filters",
+    "webpack_loader",
 ]
 LOCAL_APPS = [
+    "apps.common",
     "apps.users",
     "apps.pages",
 ]
@@ -138,6 +144,12 @@ MIDDLEWARE = [
 # 1. set STATIC_ROOT
 # 2. collectstatic --noinput: copy from all STATICFILES_DIRS and put into "staticfiles"
 # 3. Use a web server of your choice to serve the files
+
+# STATIC_URL is the URL location of static files located in STATIC_ROOT
+# STATICFILES_DIRS tells Django where to look for static files in a Django project, such as a top-level static folder
+# STATIC_ROOT is the folder location of static files when collectstatic is run
+# STATICFILES_STORAGE is the file storage engine used when collecting static files with the collectstatic command.
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"  # Url from which static files are served
 STATICFILES_DIRS = [str(APPS_DIR / "static")]
@@ -158,11 +170,13 @@ TEMPLATES = [
                 # `allauth` needs this from django
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.i18n",
                 "django.template.context_processors.media",
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "users.context_processors.allauth_settings",
+                "apps.common.context_processors.site_name",
             ],
         },
     },
@@ -189,6 +203,13 @@ EMAIL_TIMEOUT = 5
 
 # --------------------------- ADMIN -------------------------------------------
 ADMIN_URL = "admin/"
+ADMINS = [("""Ivan Prytula""", "ivan-prytula@example.com")]
+# https://docs.djangoproject.com/en/dev/ref/settings/#managers
+MANAGERS = ADMINS
+# https://cookiecutter-django.readthedocs.io/en/latest/settings.html#other-environment-settings
+# Force the `admin` sign in process to go through the `django-allauth` workflow
+DJANGO_ADMIN_FORCE_ALLAUTH = env.bool("DJANGO_ADMIN_FORCE_ALLAUTH", default=False)
+
 
 # -------------------------  LOGGING  -----------------------------------------
 LOGGING = {
@@ -276,6 +297,17 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "Documentation of API endpoints of price-navigator",
     "VERSION": "1.0.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
+}
+
+# django-webpack-loader
+# ------------------------------------------------------------------------------
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "CACHE": not DEBUG,
+        "STATS_FILE": BASE_DIR / "webpack-stats.json",
+        "POLL_INTERVAL": 0.1,
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
+    }
 }
 
 # Your stuff...

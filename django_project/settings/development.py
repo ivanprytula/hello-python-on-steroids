@@ -32,7 +32,7 @@ INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F40
 INSTALLED_APPS += ["debug_toolbar", "django_browser_reload"]  # noqa: F405
 MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]  # noqa: F405
 DEBUG_TOOLBAR_CONFIG = {
-    "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
+    "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],  # default
     "SHOW_TEMPLATE_CONTEXT": True,  # default
     "SHOW_COLLAPSED": True,  # default
 }
@@ -49,6 +49,10 @@ if env.bool("USE_DOCKER", default=False):
 # django-extensions
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ["django_extensions"]  # noqa: F405
+
+# django-webpack-loader
+# ------------------------------------------------------------------------------
+WEBPACK_LOADER["DEFAULT"]["CACHE"] = not DEBUG  # noqa: F405
 
 # ------------------------------- Celery ----------------------------------------
 CELERY_TASK_EAGER_PROPAGATES = True

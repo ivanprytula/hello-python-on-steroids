@@ -15,6 +15,7 @@ jspm_packages/
 
 # Unit test / coverage reports
 htmlcov/
+.coverage
 
 # Environments / Secret stuff
 venv/
@@ -45,4 +46,5 @@ docs/_build/
 diagrams/
 # To ignore the "directory" only in the root of your Git repository - add leading slash
 sandbox/
-public/static/dist
+apps/static/webpack_bundles/
+webpack-stats.json
