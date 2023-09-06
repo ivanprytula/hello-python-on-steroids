@@ -1,0 +1,36 @@
+[ ERROR ] 241 Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ivanp/.pyenv/versions/3.11.4/lib/python3.11/contextlib.py", line 80, in inner
+    with self._recreate_cm():
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/db/backends/dummy/base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+[ ERROR ] 241 Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ivanp/.pyenv/versions/3.11.4/lib/python3.11/contextlib.py", line 80, in inner
+    with self._recreate_cm():
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/db/transaction.py", line 198, in __enter__
+    if not connection.get_autocommit():
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 464, in get_autocommit
+    self.ensure_connection()
+  File "/home/ivanp/VSCodeProjects/hello-python-on-steroids/.venv/lib/python3.11/site-packages/django/db/backends/dummy/base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.

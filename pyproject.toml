@@ -1,7 +1,7 @@
 # ==== Pytest ====
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "--ds=django_project.settings.test_runner --reuse-db --cov-config=config/coverage.ini --cov=config_core/ --cov-branch"
+addopts = "--ds=django_project.settings.test --reuse-db --cov-config=coverage.ini --cov=. --cov-branch"
 python_files = [
     "test_*.py",
 ]
@@ -88,8 +88,37 @@ plugins = [
 
 
 [tool.django-stubs]
-django_settings_module = "django_project.settings.test_runner"
+django-settings-module = "django_project.settings.test"
 
+
+# ==== PyLint ====
+[tool.pylint.MASTER]
+load-plugins=["pylint_django"]
+# django-settings-module = "django_project.settings.development"
+
+[tool.pylint.FORMAT]
+max-line-length = 119
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "missing-docstring",
+    "invalid-name",
+    "wildcard-import",
+    "import-outside-toplevel",
+]
+
+[tool.pylint.DESIGN]
+max-parents = 13
+
+[tool.pylint.TYPECHECK]
+generated-members = [
+    "REQUEST",
+    "acl_users",
+    "aq_parent",
+    "[a-zA-Z]+_set{1,2}",
+    "save",
+    "delete",
+]
 
 [tool.bandit]
 exclude_dirs = ["tests"]

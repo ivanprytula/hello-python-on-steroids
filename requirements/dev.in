@@ -31,6 +31,8 @@ ruff
 flake8
 black
 isort
+pylint
+pylint-django
 bandit[toml]
 djlint
 mkdocs-include-markdown-plugin

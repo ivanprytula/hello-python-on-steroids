@@ -27,33 +27,37 @@ APPS_DIR = BASE_DIR / "apps"
 
 # -------------------------  GENERAL  ---------------------------------------
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
-# https://docs.djangoproject.com/en/dev/topics/i18n/
-# https://docs.djangoproject.com/en/dev/ref/settings/#language-code
+
 LANGUAGE_CODE = "en-us"
-# https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
 TIME_ZONE = "UTC"
-# https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-USE_I18N
 USE_I18N = True
-# https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
 
 # -------------------------  DATABASES  -----------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
-# NB: https://docs.djangoproject.com/en/4.2/ref/databases/#optimizing-postgresql-s-configuration
+# >>> # This will run on the 'default' database.
+# >>> Author.objects.all()
+
+# >>> # So will this.
+# >>> Author.objects.using("default")
+
+# >>> # This will run on the 'sandbox_db' database.
+# >>> Author.objects.using("sandbox_db")
+
 DATABASES = {
-    "default": env.db(var="DATABASE_URL", default=f"sqlite:///{BASE_DIR}/db.sqlite3"),
-    "basic": {
+    "default": env.db(
+        var="DATABASE_URL", default=f"sqlite:///{BASE_DIR}/db.sqlite3", engine="django.db.backends.sqlite3"
+    ),
+    "sandbox_db": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     },
 }
+
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ----------------------------  URLS  ------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
 ROOT_URLCONF = "django_project.urls"
-# https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = "django_project.wsgi.application"
 
 # ---------------------------  APPS  ------------------------------------------
@@ -77,7 +81,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     # ... include the providers you want to enable:
     # https://django-allauth.readthedocs.io/en/latest/installation.html
-    # "django_celery_beat",
+    "django_celery_beat",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
@@ -88,35 +92,27 @@ LOCAL_APPS = [
     "apps.users",
     "apps.pages",
 ]
-# https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # ------------------------  AUTHENTICATION  ---------------------------------
-# https://django-allauth.readthedocs.io/en/latest/installation.html?highlight=backends
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
-# https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model
 AUTH_USER_MODEL = "users.User"
-# https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 LOGIN_REDIRECT_URL = "users:redirect"
-# https://django-allauth.readthedocs.io/en/latest/views.html#logout-account-logout
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
-# https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
 
 # ------------------------  PASSWORDS  --------------------------------------------
 PASSWORD_HASHERS = [
-    # https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
     "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
 ]
-# https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -125,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # -------------------------  MIDDLEWARE  ---------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -143,11 +138,8 @@ MIDDLEWARE = [
 # 1. set STATIC_ROOT
 # 2. collectstatic --noinput: copy from all STATICFILES_DIRS and put into "staticfiles"
 # 3. Use a web server of your choice to serve the files
-# https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 STATIC_ROOT = BASE_DIR / "staticfiles"
-# https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"  # Url from which static files are served
-# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(APPS_DIR / "static")]
 
 # ------------------------  MEDIA  -----------------------------------------------
@@ -155,7 +147,6 @@ MEDIA_ROOT = str(APPS_DIR / "media")
 MEDIA_URL = "/media/"
 
 # ---------------------  TEMPLATES  --------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#templates
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -177,11 +168,9 @@ TEMPLATES = [
     },
 ]
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#form-renderer
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 # ------------------  django-crispy-forms  ---------------------------------------
-# https://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -192,28 +181,16 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = "DENY"
 
 # --------------------------- EMAIL -------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = env(
     "DJANGO_EMAIL_BACKEND",
     default="django.core.mail.backends.smtp.EmailBackend",
 )
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
 # --------------------------- ADMIN -------------------------------------------
 ADMIN_URL = "admin/"
 
 # -------------------------  LOGGING  -----------------------------------------
-
-# |   Level               |   Numeric value   |
-# |-------------------------------------------|
-# | logging.CRITICAL      |       50          |
-# | logging.ERROR         |       40          |
-# | logging.WARNING       |       30          |
-# | logging.INFO          |       20          |
-# | logging.DEBUG         |       10          |
-# | logging.NOTSET        |       0           |
-
 LOGGING = {
     # Define the logging version
     "version": 1,
@@ -259,7 +236,7 @@ LOGGING = {
             "level": "DEBUG",
             "propagate": True,
         },
-        "dango.request": {
+        "django.request": {
             "handlers": ["file"],
             "level": "ERROR",
             #  log messages written to django.request will not be handled by the 'django' logger
@@ -269,7 +246,6 @@ LOGGING = {
 }
 
 # -----------------------  django-allauth  -----------------------------------
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
@@ -282,7 +258,6 @@ SOCIALACCOUNT_FORMS = {"signup": "users.forms.UserSocialSignupForm"}
 ACCOUNT_UNIQUE_EMAIL = True
 
 # -------------------  django-rest-framework  ---------------------------------
-# https://www.django-rest-framework.org/api-guide/settings/
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
@@ -293,5 +268,15 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
 }
 
-# django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_URLS_REGEX = r"^/api/.*$"
+
+# By Default swagger ui is available only to admin user(s). You can change permission classes to change that
+SPECTACULAR_SETTINGS = {
+    "TITLE": "price-navigator API",
+    "DESCRIPTION": "Documentation of API endpoints of price-navigator",
+    "VERSION": "1.0.0",
+    "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
+}
+
+# Your stuff...
+# ------------------------------------------------------------------------------
