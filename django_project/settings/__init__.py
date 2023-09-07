@@ -26,6 +26,7 @@
 # https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-USE_I18N
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
+# https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 # NB: https://docs.djangoproject.com/en/4.2/ref/databases/#optimizing-postgresql-s-configuration

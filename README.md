@@ -23,6 +23,7 @@ TOC
     - [Local setup](#local-setup)
     - [Containerized setup](#containerized-setup)
     - [Django "classic" set of commands](#django-classic-set-of-commands)
+    - [Settings notes](#settings-notes)
   - [Used resources](#used-resources)
     - [Tutorials](#tutorials)
     - [Documentation/cheatsheet](#documentation-cheatsheet)
@@ -216,7 +217,6 @@ DATABASE_URL=postgres://postgres:@db:5432/postgres
 INTERNAL_IPS=127.0.0.1,0.0.0.0
 EOF
 
-
 python manage.py migrate
 python manage.py runserver
 python manage.py makemigrations
@@ -226,6 +226,25 @@ python manage.py makemigrations
 tree -a -L 2 -I .venv
 npm i
 npm run dev
+```
+
+### Settings notes
+
+Turn on Webpack usage
+
+```python
+# "webpack_loader",
+# django-webpack-loader (base.py)
+# django-webpack-loader (development.py)
+# django-webpack-loader (test.py)
+
+# in base.html:
+# <!-- {% load render_bundle from webpack_loader %} -->
+# <!-- {% render_bundle 'project' 'css' %} -->
+# <!-- {% render_bundle 'vendors' 'js' attrs='defer' %} -->
+# <!-- {% render_bundle 'project' 'js' attrs='defer' %} -->
+
+
 ```
 
 ## Used resources

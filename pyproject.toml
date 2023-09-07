@@ -1,7 +1,7 @@
 # ==== Pytest ====
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "--ds=django_project.settings.test --reuse-db --cov-config=coverage.ini --cov=. --cov-branch"
+addopts = "--ds=django_project.settings.test --reuse-db --cov-config=coverage.ini"
 python_files = [
     "test_*.py",
 ]
@@ -22,7 +22,8 @@ markers = [
 
 # ==== Coverage ====
 [tool.coverage.run]
-# include = ["co/**"]
+# source = ["."]
+include = ["apps/**"]
 omit = [
     ".venv/*",
     "manage.py",
@@ -31,12 +32,12 @@ omit = [
 ]
 plugins = ["django_coverage_plugin"]
 branch = true
-source = ["."]
 
 [tool.coverage.html]
 directory = "htmlcov"
 
 
+# ==== Black ====
 [tool.black]
 line-length = 119
 target-version = ['py311']
@@ -50,6 +51,8 @@ exclude = '''
 )
 '''
 
+
+# ==== Isort ====
 [tool.isort]
 profile = "black"
 line_length = 119
@@ -63,6 +66,7 @@ known_first_party = [
 skip = [".venv/", "venv", "node_modules"]
 
 
+# ==== Mypy ====
 [tool.mypy]
 # The mypy configurations: https://mypy.readthedocs.io/en/latest/config_file.html
 python_version = "3.11"
@@ -86,7 +90,7 @@ plugins = [
   "mypy_django_plugin.main",
 ]
 
-
+# ==== django-stubs ====
 [tool.django-stubs]
 django-settings-module = "django_project.settings.test"
 
@@ -120,10 +124,21 @@ generated-members = [
     "delete",
 ]
 
+
+# ==== Ruff ====
+[tool.ruff]
+line-length = 120
+# Enable Pyflakes `E` and `F` codes by default.
+select = ["E", "F"]
+ignore = ["E501", "E741"]
+
+
+# ==== Bandit ====
 [tool.bandit]
 exclude_dirs = ["tests"]
 
 
+# ==== djlint ====
 [tool.djlint]
 indent = 2
 profile="django"
@@ -140,10 +155,3 @@ indent_size=2
 
 [tool.djlint.css]
 indent_size=2
-
-
-[tool.ruff]
-line-length = 120
-# Enable Pyflakes `E` and `F` codes by default.
-select = ["E", "F"]
-ignore = ["E501", "E741"]

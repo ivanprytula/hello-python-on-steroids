@@ -1,107 +1,121 @@
 {% load static i18n %}
 
-{% load render_bundle from webpack_loader %}
 
 {% load django_browser_reload %}
 
 <!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-      <title>
-        {% block title %}
-        {% endblock title %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        {% if SITE_NAME %} - {{ SITE_NAME }}{% endif %}
-      </title>
+  <title>
+    {% block title %}
+    {% endblock title %}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hello Python on steroids">
-    <meta name="author" content="Ivan Prytula">
+    {% if SITE_NAME %} - {{ SITE_NAME }}{% endif %}
+  </title>
 
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicons/favicon.ico' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hello Python on steroids">
+  <meta name="author" content="Ivan Prytula">
 
-    {% block css %}
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Your stuff: Third-party CSS libraries go here -->
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicons/favicon.ico' %}">
 
-    <!-- This file stores project-specific CSS -->
-    {% render_bundle 'project' 'css' %}
+  {% block css %}
 
-    {% endblock css %}
+  <!-- NO front-end CSS pipeline  -->
+  <!-- n1. Latest compiled and minified Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+    integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- n2. Your stuff: Third-party CSS libraries go here -->
+  <!-- n3. This file stores project-specific CSS -->
+  <link href="{% static 'css/project.css' %}" rel="stylesheet" />
 
-    <!-- Le javascript
+  <!-- YES front-end CSS pipeline  -->
+  <!-- y1. Select a pipeline to compile and optimize frontend CSS assets  -->
+
+  {% endblock css %}
+
+  <!-- Le javascript
     ================================================== -->
-    {# Placed at the top of the document so pages load faster with defer #}
-    {% block javascript %}
+  {# Placed at the top of the document so pages load faster with defer #}
+  {% block javascript %}
 
-      <!-- Vendor dependencies bundled as one file -->
-      {% render_bundle 'vendors' 'js' attrs='defer' %}
+  <!-- NO front-end JS pipeline  -->
+  <!-- n1. Bootstrap JS -->
+  <script defer
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+  integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+  <!-- n2. Your stuff: Third-party javascript libraries go here -->
+  <!-- n3. place project specific Javascript in this file -->
+  <script defer src="{% static 'js/project.js' %}"></script>
 
-      <!-- Your stuff: Third-party javascript libraries go here -->
+  <!-- YES front-end JS pipeline  -->
+  <!-- y1. Select a pipeline to compile and optimize JS assets -->
+  <!-- y1. Vendor dependencies bundled as one file -->
+  <!-- y2. Your stuff: Third-party javascript libraries go here -->
 
-      <!-- place project specific Javascript in this file -->
-      {% render_bundle 'project' 'js' attrs='defer' %}
+  {% endblock javascript %}
 
-    {% endblock javascript %}
+</head>
 
-  </head>
-
-  <body {% block body_attr %} class="{% block body_class %}d-flex flex-column h-100{% endblock body_class %}
+<body {% block body_attr %} class="{% block body_class %}d-flex flex-column h-100{% endblock body_class %}
      " id="{% block body_id %}{% endblock body_id %}
-     " {% endblock body_attr %}
-    >
-    {% block base_header %}
-      {% include "components/nav.html" %}
-    {% endblock base_header %}
+     " {% endblock body_attr %}>
+  {% block base_header %}
+  {% include "components/nav.html" %}
+  {% endblock base_header %}
 
 
 
-    <main class="flex-shrink-0">
-      {% block breadcrumb %}
-      {% endblock breadcrumb %}
+  <main class="flex-shrink-0">
+    {% block breadcrumb %}
+    {% endblock breadcrumb %}
 
-      {% if messages %}
-        <div id="flash-message-container" class="container">
-          {% for message in messages %}<p class="alert alert-{{ message.tags }}">{{ message }}</p>{% endfor %}
-        </div>
-      {% endif %}
-      {% block base_content %}
-        <div id="main-content" class="container">
-          {% block content %}
-          {% endblock content %}
+    {% if messages %}
+    <div id="flash-message-container" class="container">
+      {% for message in messages %}<p class="alert alert-{{ message.tags }}">{{ message }}</p>{% endfor %}
+    </div>
+    {% endif %}
+    {% block base_content %}
+    <div id="main-content" class="container">
+      {% block content %}
+      {% endblock content %}
 
-        </div>
-      {% endblock base_content %}
+    </div>
+    {% endblock base_content %}
 
-    </main>
-
-
-    {% block modal %}{% endblock modal %}
+  </main>
 
 
-    <footer class="footer mt-auto">
-      <div class="container border-top py-3">
-        <p>© {{ SITE_NAME }} {% now "Y" %}</p>
-      </div>
-    </footer>
+  {% block modal %}{% endblock modal %}
 
 
-    {% block inline_javascript %}
-    {% comment %}
-    Script tags with only code, no src (defer by default). To run
-    with a "defer" so that you run inline code:
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
-    </script>
-    {% endcomment %}
-    {% endblock inline_javascript %}
+  <footer class="footer mt-auto">
+    <div class="container border-top py-3">
+      <p>© {{ SITE_NAME }} {% now "Y" %}</p>
+    </div>
+  </footer>
+
+
+  {% block inline_javascript %}
+  {% comment %}
+  Script tags with only code, no src (defer by default). To run
+  with a "defer" so that you run inline code:
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */ });
+  </script>
+  {% endcomment %}
+  {% endblock inline_javascript %}
 
   {% django_browser_reload_script %}
 
-  </body>
+</body>
+
 </html>

@@ -14,16 +14,14 @@ from pathlib import Path
 
 import environ
 
-env = environ.Env()
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+APPS_DIR = BASE_DIR / "apps"
+env = environ.Env()
 
 # Take environment variables from .env file
 # OS environment variables take precedence over variables from .env
 env.read_env(str(BASE_DIR / ".env"))
-APPS_DIR = BASE_DIR / "apps"
 
 # -------------------------  GENERAL  ---------------------------------------
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
@@ -46,7 +44,7 @@ USE_TZ = True
 
 # >>> # This will run on the 'sandbox_db' database.
 # >>> Author.objects.using("sandbox_db")
-
+# https://docs.djangoproject.com/en/4.2/topics/db/multi-db/
 DATABASES = {
     "default": env.db(
         var="DATABASE_URL", default=f"sqlite:///{BASE_DIR}/db.sqlite3", engine="django.db.backends.sqlite3"
@@ -55,6 +53,12 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     },
+    # "replica_1_mysql": {
+    #     "NAME": "replica1_name",
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "USER": "mysql_user",
+    #     "PASSWORD": "eggs",
+    # },
 }
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -91,14 +95,20 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "drf_spectacular",
     "django_filters",
-    "webpack_loader",
+    # "webpack_loader",
 ]
 LOCAL_APPS = [
+    # "<project_slug>.<name-of-the-app>.apps.<NameOfTheAppConfigClass>",
+    "apps.users.apps.UsersConfig",
     "apps.common",
-    "apps.users",
+    # "apps.users",
     "apps.pages",
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# MIGRATIONS
+# ------------------------------------------------------------------------------
+MIGRATION_MODULES = {"sites": "apps.contrib.sites.migrations"}
 
 # ------------------------  AUTHENTICATION  ---------------------------------
 AUTHENTICATION_BACKENDS = (
@@ -153,7 +163,10 @@ MIDDLEWARE = [
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"  # Url from which static files are served
 STATICFILES_DIRS = [str(APPS_DIR / "static")]
-
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
 # ------------------------  MEDIA  -----------------------------------------------
 MEDIA_ROOT = str(APPS_DIR / "media")
 MEDIA_URL = "/media/"
@@ -266,6 +279,41 @@ LOGGING = {
     },
 }
 
+# Celery
+# ------------------------------------------------------------------------------
+if USE_TZ:
+    # https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-timezone
+    CELERY_TIMEZONE = TIME_ZONE
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-broker_url
+CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-result_backend
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#result-extended
+CELERY_RESULT_EXTENDED = True
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#result-backend-always-retry
+# https://github.com/celery/celery/pull/6122
+CELERY_RESULT_BACKEND_ALWAYS_RETRY = True
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#result-backend-max-retries
+CELERY_RESULT_BACKEND_MAX_RETRIES = 10
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-accept_content
+CELERY_ACCEPT_CONTENT = ["json"]
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-task_serializer
+CELERY_TASK_SERIALIZER = "json"
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-result_serializer
+CELERY_RESULT_SERIALIZER = "json"
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#task-time-limit
+# TODO: set to whatever value is adequate in your circumstances
+CELERY_TASK_TIME_LIMIT = 5 * 60
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#task-soft-time-limit
+# TODO: set to whatever value is adequate in your circumstances
+CELERY_TASK_SOFT_TIME_LIMIT = 60
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#beat-scheduler
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#worker-send-task-events
+CELERY_WORKER_SEND_TASK_EVENTS = True
+# https://docs.celeryq.dev/en/stable/userguide/configuration.html#std-setting-task_send_sent_event
+CELERY_TASK_SEND_SENT_EVENT = True
+
 # -----------------------  django-allauth  -----------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 ACCOUNT_AUTHENTICATION_METHOD = "email"
@@ -273,9 +321,9 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_ADAPTER = "users.adapters.AccountAdapter"
-ACCOUNT_FORMS = {"signup": "users.forms.UserSignupForm"}
-SOCIALACCOUNT_FORMS = {"signup": "users.forms.UserSocialSignupForm"}
+ACCOUNT_ADAPTER = "apps.users.adapters.AccountAdapter"
+ACCOUNT_FORMS = {"signup": "apps.users.forms.UserSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "apps.users.forms.UserSocialSignupForm"}
 ACCOUNT_UNIQUE_EMAIL = True
 
 # -------------------  django-rest-framework  ---------------------------------
@@ -301,14 +349,14 @@ SPECTACULAR_SETTINGS = {
 
 # django-webpack-loader
 # ------------------------------------------------------------------------------
-WEBPACK_LOADER = {
-    "DEFAULT": {
-        "CACHE": not DEBUG,
-        "STATS_FILE": BASE_DIR / "webpack-stats.json",
-        "POLL_INTERVAL": 0.1,
-        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
-    }
-}
+# WEBPACK_LOADER = {
+#     "DEFAULT": {
+#         "CACHE": not DEBUG,
+#         "STATS_FILE": BASE_DIR / "webpack-stats.json",
+#         "POLL_INTERVAL": 0.1,
+#         "IGNORE": [r".+\.hot-update.js", r".+\.map"],
+#     }
+# }
 
 # Your stuff...
 # ------------------------------------------------------------------------------
