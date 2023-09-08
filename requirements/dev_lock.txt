@@ -1406,9 +1406,9 @@ pure-eval==0.2.2 \
     --hash=sha256:01eaab343580944bc56080ebe0a674b39ec44a945e6d09ba7db3cb8cec289350 \
     --hash=sha256:2b45320af6dfaa1750f543d714b6d1c520a1688dec6fd24d339063ce0aaa9ac3
     # via stack-data
-py-serializable==0.11.1 \
-    --hash=sha256:79e21f0672822e6200b15f45ce9f636e8126466f62dbd7d488c67313c72b5c3e \
-    --hash=sha256:ba0e1287b9e4f645a5334f1913abd8e647e7250209f84f55dce3909498a6f586
+py-serializable==0.12.0 \
+    --hash=sha256:1771811289b919062fdc0a26c02b79cfedeeaa7fbc97ac2d862ee7f8eaf13dee \
+    --hash=sha256:f26cee7f597489a2c05f7a203adefd5d6e1223dc5e91335ad4a01a6292fced4d
     # via cyclonedx-python-lib
 pycodestyle==2.11.0 \
     --hash=sha256:259bcc17857d8a8b3b4a2327324b79e5f020a13c16074670f9c8c8f872ea76d0 \
