@@ -15,6 +15,7 @@ django-coverage-plugin
 # For runserver_plus
 django-extensions
 Werkzeug[watchdog]
+pyOpenSSL
 
 # Dependencies management
 pipdeptree

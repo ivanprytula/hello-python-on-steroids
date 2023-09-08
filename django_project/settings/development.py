@@ -43,7 +43,8 @@ STORAGES = {
 
 # django-debug-toolbar & django-browser-reload
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ["debug_toolbar", "django_browser_reload"]  # noqa: F405
+INSTALLED_APPS += ["debug_toolbar"]  # noqa: F405
+INSTALLED_APPS += ["django_browser_reload"]  # noqa: F405
 MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]  # noqa: F405
 DEBUG_TOOLBAR_CONFIG = {
     "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],  # default
@@ -76,3 +77,11 @@ SILKY_PYTHON_PROFILER = True
 
 # ------------------------------- Celery ----------------------------------------
 CELERY_TASK_EAGER_PROPAGATES = True
+
+
+# ----------------- SSL (secure sockets layer) -------------------
+#  https://learndjango.com/tutorials/django-best-practices-security
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS = 2592000
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True

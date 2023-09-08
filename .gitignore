@@ -48,3 +48,7 @@ diagrams/
 sandbox/
 apps/static/webpack_bundles/
 webpack-stats.json
+
+# CA/SSL
+cert.pem
+key.pem

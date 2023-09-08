@@ -113,14 +113,14 @@ mig:
 colstat:
 	python manage.py collectstatic --no-input
 
-runs:
+runs:  ## HTTP
 	python manage.py runserver
 
 runsgu:
 	gunicorn django_project.wsgi
 
-run-plus:
-	python manage.py runserver_plus
+runs-plus: ## HTTPS with the help of mkcert
+	python manage.py runserver_plus --cert-file cert.pem --key-file key.pem
 
 pre-commit-all:
 	pre-commit run --all-files

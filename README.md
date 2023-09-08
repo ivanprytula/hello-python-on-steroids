@@ -230,7 +230,7 @@ npm run dev
 
 ### Settings notes
 
-#### Turn on Webpack usage
+#### Turn on-off Webpack usage
 
 ```python
 # "webpack_loader",
@@ -280,6 +280,32 @@ INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F40
 # Finally. As part of deploying your app you’ll need to run ./manage.py collectstatic to put all your static files into STATIC_ROOT.
 ```
 
+#### Local Django server over HTTPS with a trusted self-signed SSL certificate
+
+```shell
+# Step 1 - Generating a local SSL certificate
+brew install mkcert
+sudo apt install libnss3-tools
+mkcert -install  # -> it will ask you for sudo password
+# [it depends on your case] Install "certutil" with "sudo apt install libnss3-tools" and re-run "mkcert -install"
+mkcert -cert-file cert.pem -key-file key.pem 0.0.0.0 localhost 127.0.0.1 ::1
+# Created a new certificate valid for the following names 📜
+#  - "localhost"
+#  - "127.0.0.1"
+
+# The certificate is at "cert.pem" and the key at "key.pem"
+# It will expire on 8 December 2025
+
+# Step 2 - Configuring Django server to work with HTTPS
+#  Install Django extensions along with the Wekzeug server
+python manage.py runserver_plus --cert-file cert.pem --key-file key.pem
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+```
+
 ## Used resources
 
 ### Tutorials
@@ -289,6 +315,7 @@ INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F40
 - <https://cheat.readthedocs.io/en/latest/index.html>
 - <https://fabien.herfray.org/posts/mastering-postgres-indexes-in-10-minutes/>
 - <https://vglushko.github.io/development/2022/12/22/python-dev-environment.html>/home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/conftest.py /home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/__init__.py
+- <https://timonweb.com/django/https-django-development-server-ssl-certificate/>
 - ...
 
 ### Documentation, cheatsheet
