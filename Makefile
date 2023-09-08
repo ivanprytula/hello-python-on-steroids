@@ -110,8 +110,14 @@ mm:
 mig:
 	python manage.py migrate
 
+colstat:
+	python manage.py collectstatic --no-input
+
 runs:
 	python manage.py runserver
+
+runsgu:
+	gunicorn django_project.wsgi
 
 run-plus:
 	python manage.py runserver_plus

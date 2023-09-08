@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
+from django.views.generic.base import TemplateView
 
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
@@ -33,14 +34,18 @@ from rest_framework.authtoken.views import obtain_auth_token
 #  Settings don’t often change, but when they do, you definitely want to use the new value.
 
 urlpatterns = [
-    path("", include("pages.urls", namespace="pages")),
+    path("", include("apps.pages.urls", namespace="pages")),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("apps.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    # ...
+    # https://adamj.eu/tech/2020/02/10/robots-txt/
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
 ]
 
 api_version = "api/v1/"

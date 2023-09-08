@@ -31,8 +31,6 @@ INSTALLED_APPS += ["storages"]  # noqa: F405
 # COLLECTFAST_STRATEGY = "collectfast.strategies.gcloud.GoogleCloudStrategy"
 # STATIC_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/static/"
 
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",

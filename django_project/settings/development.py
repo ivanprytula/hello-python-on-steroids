@@ -25,7 +25,21 @@ EMAIL_BACKEND = env(
 )
 
 # ---------------------------  WhiteNoise  --------------------------------------
+# Django doesn't support serving static assets in a production-ready way, so we use the
+# excellent WhiteNoise package to do so instead. The WhiteNoise middleware must be listed
+# after Django's `SecurityMiddleware` so that security redirects are still performed.
+# See: https://whitenoise.readthedocs.io
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")  # noqa: F405
 INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F405
+WHITENOISE_INDEX_FILE = True
+
+# STATIC
+# ------------------------
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # django-debug-toolbar & django-browser-reload
 # ------------------------------------------------------------------------------

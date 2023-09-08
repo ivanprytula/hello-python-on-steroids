@@ -100,8 +100,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     # "<project_slug>.<name-of-the-app>.apps.<NameOfTheAppConfigClass>",
     "apps.common",
-    "apps.users.apps.UsersConfig",
-    # "apps.users",
+    # "apps.users.apps.UsersConfig",
+    "apps.users",
     "apps.pages",
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -140,7 +140,6 @@ AUTH_PASSWORD_VALIDATORS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -161,8 +160,9 @@ MIDDLEWARE = [
 # STATICFILES_STORAGE is the file storage engine used when collecting static files with the collectstatic command.
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATIC_URL = "/static/"  # Url from which static files are served
-STATICFILES_DIRS = [str(APPS_DIR / "static")]
+STATIC_URL = "static/"  # Url from which static files are served
+# STATICFILES_DIRS = [str(APPS_DIR / "static")]
+STATICFILES_DIRS = [APPS_DIR / "static"]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",

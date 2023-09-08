@@ -230,7 +230,7 @@ npm run dev
 
 ### Settings notes
 
-Turn on Webpack usage
+#### Turn on Webpack usage
 
 ```python
 # "webpack_loader",
@@ -243,8 +243,39 @@ Turn on Webpack usage
 # <!-- {% render_bundle 'project' 'css' %} -->
 # <!-- {% render_bundle 'vendors' 'js' attrs='defer' %} -->
 # <!-- {% render_bundle 'project' 'js' attrs='defer' %} -->
+```
 
+#### Serve static files in Django using Whitenoise (dev)
 
+```python
+# See: https://whitenoise.readthedocs.io
+
+# 1. Make sure staticfiles is configured correctly
+# pip install whitenoise
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "/static/"  # Url from which static files are served
+# {% load static %}
+
+# 2. Enable WhiteNoise
+MIDDLEWARE = [
+    # ...
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # ...
+]
+
+# 3. Add compression and caching support
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+# 4. Use a Content-Delivery Network
+# 5. Using WhiteNoise in development
+INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F405
+# 6. Index Files
 ```
 
 ## Used resources
