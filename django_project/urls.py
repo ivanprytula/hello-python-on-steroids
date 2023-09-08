@@ -45,8 +45,10 @@ urlpatterns = [
 
 # API URLS
 urlpatterns += [
-    # API base url
+    # API base url for ViewSets-based apps
     path("api/", include("django_project.api_router")),
+    # health check, exception, email-admins
+    path("api/", include("apps.common.urls")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
@@ -57,13 +59,11 @@ urlpatterns += [
     ),
 ]
 
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += [
-        path("__reload__/", include("django_browser_reload.urls")),
-    ]
+# static files
+urlpatterns += static(
+    settings.STATIC_URL,
+    document_root=settings.STATIC_ROOT,
+)
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
@@ -87,7 +87,17 @@ if settings.DEBUG:
         path("500/", default_views.server_error),
     ]
 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [
+        path("__reload__/", include("django_browser_reload.urls")),
+    ]
+
+    urlpatterns += [path("api-auth/", include("rest_framework.urls"))]
+
+    # django-silk
+    urlpatterns += [path("api/silk/", include("silk.urls", namespace="silk"))]
+
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar
 
-        urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
+        urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]

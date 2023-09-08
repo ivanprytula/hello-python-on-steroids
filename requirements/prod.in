@@ -3,25 +3,38 @@
 # in order to compile a new requirement files run:
 # pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/prod_lock.txt requirements/prod.in
 
+# Core framework addons / extra packages
 Django~=4.2
-boto3~=1.28
 django-environ~=0.11
-psycopg~=3.1
-argon2-cffi~=21.3  # https://github.com/hynek/argon2_cffi
 djangorestframework~=3.14
 django-cors-headers~=4.2
-drf-spectacular~=0.26
-whitenoise~=6.5
-gunicorn~=21.2
 django-filter~=23.2
+django-allauth~=0.55  # https://github.com/pennersr/django-allauth
 django-crispy-forms~=2.0  # https://github.com/django-crispy-forms/django-crispy-forms
 crispy-bootstrap5~=0.7  # https://github.com/django-crispy-forms/crispy-bootstrap5
-django-allauth~=0.55  # https://github.com/pennersr/django-allauth
+whitenoise~=6.5
+gunicorn~=21.2
+
+# Cloud storage
+boto3~=1.28
+django-storages~=1.14
+
+# Async tasks / message brockers
 celery~=5.3  # pyup: < 6.0  # https://github.com/celery/celery
 flower~=2.0  # https://github.com/mher/flower
 django-celery-beat~=2.5  # https://github.com/celery/django-celery-beat
 redis~=5.0  # https://github.com/redis/redis-py
 hiredis~=2.2  # needed for Django's native cache and sessions
 django-redis~=5.3  # https://github.com/jazzband/django-redis
-django-storages~=1.14
+
+# Databases
+psycopg~=3.1
+
+# Security / passwords
+argon2-cffi~=21.3  # https://github.com/hynek/argon2_cffi
+
+# API spec
+drf-spectacular~=0.26
+
+# Frontend pipelines
 django-webpack-loader~=2.0  # https://github.com/django-webpack/django-webpack-loader

@@ -99,8 +99,8 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     # "<project_slug>.<name-of-the-app>.apps.<NameOfTheAppConfigClass>",
-    "apps.users.apps.UsersConfig",
     "apps.common",
+    "apps.users.apps.UsersConfig",
     # "apps.users",
     "apps.pages",
 ]

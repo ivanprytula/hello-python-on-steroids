@@ -6,35 +6,55 @@
 
 -r prod.in
 
-pipdeptree
+# Core framework addons / extra packages
 django-debug-toolbar  # https://github.com/jazzband/django-debug-toolbar
-django-extensions
 django-browser-reload  # https://pypi.org/project/django-browser-reload/
 django-silk
 django-coverage-plugin
-pytest-django  # https://github.com/pytest-dev/pytest-django
-pytest-xdist
-pytest-cov
-pytest-repeat
-factory-boy  # https://github.com/FactoryBoy/factory_boy
-chromedriver
-hypothesis
-selenium
+
+# For runserver_plus
+django-extensions
 Werkzeug[watchdog]
+
+# Dependencies management
+pipdeptree
 pip-tools
 pip-audit
-ipython
-pre-commit
+
+# Type checking
 mypy
 typeguard
-ruff
+
+# Code linting
 flake8
-black
 isort
 pylint
 pylint-django
-bandit[toml]
 djlint
+
+# Security / passwords
+bandit[toml]
+
+# Code formatting
+ruff
+pre-commit
+black
+
+# Testing
+pytest
+pytest-django  # https://github.com/pytest-dev/pytest-django
+pytest-xdist
+pytest-cov
+factory-boy  # https://github.com/FactoryBoy/factory_boy
+pytest-repeat
+selenium
+hypothesis
+chromedriver
+
+# Better shell, Jupyter notebooks
+ipython
+
+# Documentation
 mkdocs-include-markdown-plugin
 mkdocs-linkcheck
 mkdocs-material

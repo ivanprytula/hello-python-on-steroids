@@ -3,6 +3,7 @@
 minversion = "7.0"
 addopts = "--ds=django_project.settings.test --reuse-db --cov-config=coverage.ini"
 python_files = [
+    "tests.py",
     "test_*.py",
 ]
 required_plugins = ["pytest-django", "pytest-xdist"]
