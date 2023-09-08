@@ -276,6 +276,8 @@ STORAGES = {
 # 5. Using WhiteNoise in development
 INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F405
 # 6. Index Files
+
+# Finally. As part of deploying your app you’ll need to run ./manage.py collectstatic to put all your static files into STATIC_ROOT.
 ```
 
 ## Used resources
