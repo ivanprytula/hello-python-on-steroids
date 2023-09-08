@@ -9,7 +9,7 @@
 # Core framework addons / extra packages
 django-debug-toolbar  # https://github.com/jazzband/django-debug-toolbar
 django-browser-reload  # https://pypi.org/project/django-browser-reload/
-django-silk
+django-silk  # https://github.com/jazzband/django-silk
 django-coverage-plugin
 
 # For runserver_plus

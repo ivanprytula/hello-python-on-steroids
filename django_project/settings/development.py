@@ -50,6 +50,12 @@ if env.bool("USE_DOCKER", default=False):
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ["django_extensions"]  # noqa: F405
 
+# django-silk
+# ------------------------------------------------------------------------------
+MIDDLEWARE += ["silk.middleware.SilkyMiddleware"]  # noqa: F405
+INSTALLED_APPS += ["silk"]  # noqa: F405
+SILKY_PYTHON_PROFILER = True
+
 # django-webpack-loader
 # ------------------------------------------------------------------------------
 # WEBPACK_LOADER["DEFAULT"]["CACHE"] = not DEBUG  # noqa: F405
