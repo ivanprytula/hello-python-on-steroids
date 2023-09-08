@@ -204,7 +204,12 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 # --------------------------- SECURITY -------------------------------------------
-SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_HTTPONLY = True  # default: True - Your code shouldn’t read session cookies from JavaScript
+
+# client-side JavaScript will not be able to access the CSRF cookie
+# Although the setting offers little practical benefit, it’s sometimes required by security auditors.
+# If you enable this and need to send the value of the CSRF token with an AJAX request,
+#  your JavaScript must pull the value from a hidden CSRF token form input instead of from the cookie.
 CSRF_COOKIE_HTTPONLY = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = "DENY"
@@ -335,7 +340,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-    # "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
 }
 

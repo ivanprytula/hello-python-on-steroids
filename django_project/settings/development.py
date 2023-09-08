@@ -78,10 +78,17 @@ SILKY_PYTHON_PROFILER = True
 # ------------------------------- Celery ----------------------------------------
 CELERY_TASK_EAGER_PROPAGATES = True
 
-
+# --------------------------- SECURITY -------------------------------------------
+# corresponding section for base.py + ...
 # ----------------- SSL (secure sockets layer) -------------------
 #  https://learndjango.com/tutorials/django-best-practices-security
-# SECURE_SSL_REDIRECT = True
-# SECURE_HSTS_SECONDS = 2592000
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
+# NB; get used to work in 'dev-prod parity' way
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 2592000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# python manage.py check --deploy
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+DEBUG = False
