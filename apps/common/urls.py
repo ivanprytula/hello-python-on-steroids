@@ -7,4 +7,5 @@ urlpatterns = [
     path("exception/", views.trigger_exception, name="exception"),
     path("email-admins/", views.email_admins, name="email-admins"),
     path("version/", views.version, name="version"),
+    path("db-conn-status/", views.db_connection_status, name="db-conn-status"),
 ]

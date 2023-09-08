@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 
 import pytest
 
-from apps.core.models import RequestLog
+from apps.common.models import RequestLog
 
 User = get_user_model()
 

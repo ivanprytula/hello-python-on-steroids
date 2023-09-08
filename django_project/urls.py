@@ -43,12 +43,14 @@ urlpatterns = [
     # ...
 ]
 
+api_version = "api/v1/"
+
 # API URLS
 urlpatterns += [
-    # API base url for ViewSets-based apps
-    path("api/", include("django_project.api_router")),
     # health check, exception, email-admins
-    path("api/", include("apps.common.urls")),
+    path(f"{api_version}", include("apps.common.urls")),
+    # API base url for ViewSets-based apps
+    path(f"{api_version}", include("django_project.api_router")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),

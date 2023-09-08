@@ -1,10 +1,9 @@
 from django.urls import path
 
-from .views import AboutPageView, HomePageView, db_connection_status
+from .views import AboutPageView, HomePageView
 
 app_name = "pages"
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
     path("about/", AboutPageView.as_view(), name="about"),
-    path("db-conn-status/", db_connection_status, name="db-conn-status"),
 ]
