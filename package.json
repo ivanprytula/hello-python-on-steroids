@@ -2,7 +2,7 @@
   "name": "hello-python-on-steroids",
   "version": "0.1.0",
   "devDependencies": {
-    "@babel/core": "^7.16.5",
+    "@babel/core": "^7.22.17",
     "@babel/preset-env": "^7.16.5",
     "@popperjs/core": "^2.10.2",
     "autoprefixer": "^10.4.0",
