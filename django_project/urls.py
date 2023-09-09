@@ -38,7 +38,7 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path("users/", include("apps.users.urls", namespace="users")),
+    path("users/", include("users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
     # https://adamj.eu/tech/2020/02/10/robots-txt/
@@ -48,19 +48,19 @@ urlpatterns = [
     ),
 ]
 
-api_version = "api/v1/"
+api_version = "api/v1"
 
 # API URLS
 urlpatterns += [
     # health check, exception, email-admins
-    path(f"{api_version}", include("apps.common.urls")),
+    path(f"{api_version}/", include("apps.common.urls")),
     # API base url for ViewSets-based apps
-    path(f"{api_version}", include("django_project.api_router")),
+    path(f"{api_version}/", include("django_project.api_router")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
-    path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+    path(f"{api_version}/schema/", SpectacularAPIView.as_view(), name="api-schema"),
     path(
-        "api/docs/",
+        f"{api_version}/docs/",
         SpectacularSwaggerView.as_view(url_name="api-schema"),
         name="api-docs",
     ),

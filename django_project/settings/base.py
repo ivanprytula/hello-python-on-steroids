@@ -121,7 +121,7 @@ AUTHENTICATION_BACKENDS = (
 )
 AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "users:redirect"
-ACCOUNT_LOGOUT_REDIRECT_URL = "home"
+ACCOUNT_LOGOUT_REDIRECT_URL = "pages:index"
 LOGIN_URL = "account_login"
 
 # ------------------------  PASSWORDS  --------------------------------------------
@@ -349,7 +349,7 @@ CORS_URLS_REGEX = r"^/api/.*$"
 # By Default swagger ui is available only to admin user(s). You can change permission classes to change that
 SPECTACULAR_SETTINGS = {
     "TITLE": "price-navigator API",
-    "DESCRIPTION": "Documentation of API endpoints of price-navigator",
+    "DESCRIPTION": "Documentation of API endpoints of hello-python-on-steroids",
     "VERSION": "1.0.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
 }
