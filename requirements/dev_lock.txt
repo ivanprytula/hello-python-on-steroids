@@ -202,9 +202,9 @@ boolean-py==4.0 \
     --hash=sha256:17b9a181630e43dde1851d42bef546d616d5d9b4480357514597e78b203d06e4 \
     --hash=sha256:2876f2051d7d6394a531d82dc6eb407faa0b01a0a0b3083817ccd7323b8d96bd
     # via license-expression
-boto3==1.28.43 \
-    --hash=sha256:4cd3e96900fb50bddc9f48007176c80d15396d08c5248b25a41220f3570e014f \
-    --hash=sha256:c0211a3e830432851c73fa1e136b14dbb6d02b5c9a5e1272c557e63538620b88
+boto3==1.28.44 \
+    --hash=sha256:c53c92dfe22489ba31e918c2e7b59ff43e2e778bd3d3559e62351a739382bb5c \
+    --hash=sha256:eea3b07e0f28c9f92bccab972af24a3b0dd951c69d93da75227b8ecd3e18f6c4
     # via -r requirements/prod.in
 botocore==1.31.43 \
     --hash=sha256:b4a3a1fcf75011351e2b0d3eb991f51f8d44a375d3e065f907dac67db232fc97 \
