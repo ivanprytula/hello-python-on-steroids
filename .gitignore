@@ -42,6 +42,7 @@ docs/_build/
 .env
 
 ### -------------------- Project dirs --------------------------
+logs/
 
 diagrams/
 # To ignore the "directory" only in the root of your Git repository - add leading slash

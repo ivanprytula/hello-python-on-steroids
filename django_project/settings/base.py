@@ -28,6 +28,7 @@ LANGUAGE_CODE = "en-us"
 
 SITE_ID = 1
 SITE_NAME = "Hello Python on steroids"
+SOURCE_TAG = env.str("SOURCE_TAG", default="-")
 
 TIME_ZONE = "UTC"
 USE_I18N = True

@@ -23,7 +23,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic.base import TemplateView
 
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
 # https://adamj.eu/tech/2022/11/24/django-settings-patterns-to-avoid/
@@ -53,16 +53,21 @@ api_version = "api/v1"
 # API URLS
 urlpatterns += [
     # health check, exception, email-admins
-    path(f"{api_version}/", include("apps.common.urls")),
+    path(f"{api_version}/", include("apps.common.urls", namespace="common")),
     # API base url for ViewSets-based apps
     path(f"{api_version}/", include("django_project.api_router")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
     path(f"{api_version}/schema/", SpectacularAPIView.as_view(), name="api-schema"),
     path(
-        f"{api_version}/docs/",
+        f"{api_version}/schema/swagger-ui",
         SpectacularSwaggerView.as_view(url_name="api-schema"),
-        name="api-docs",
+        name="swagger-ui",
+    ),
+    path(
+        f"{api_version}/schema/redoc/",
+        SpectacularRedocView.as_view(url_name="api-schema"),
+        name="redoc",
     ),
 ]
 
@@ -99,6 +104,7 @@ if settings.DEBUG:
         path("__reload__/", include("django_browser_reload.urls")),
     ]
 
+    # https://127.0.0.1:8000/api-auth/login/?next=/api/v1/
     urlpatterns += [path("api-auth/", include("rest_framework.urls"))]
 
     # django-silk

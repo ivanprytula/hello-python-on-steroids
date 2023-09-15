@@ -23,3 +23,15 @@
 <ul>
   <li><a href="{% url 'pages:index-detail' 1 %}">/index/1</a> - models</li>
 </ul>
+
+<hr>
+
+<h3>APIs (testing/sandbox)</h3>
+<ul>
+  <li><a href="{% url 'common:health-check' %}">/health-check</a> - simple API health-check</li>
+  <li><a href="{% url 'common:test-exception' %}">/test-exception</a> - triggers an exception "405 Method Not Allowed", for testing</li>
+  <li><a href="{% url 'common:project-version' %}">/project-version</a> - project version as defined in SOURCE_TAG env variable</li>
+  <li><a href="{% url 'common:email-admins' %}">/email-admins</a> - test celery task for sending email to admins</li>
+  <li><a href="{% url 'common:db-conn-status' %}">/db-conn-status</a> - simple DB connection status check "SELECT 1"</li>
+
+</ul>
