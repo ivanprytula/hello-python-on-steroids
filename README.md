@@ -1,6 +1,6 @@
 # Hello Python on steroids
 
-Yet (my) another mega project about Python and Django DX.
+Yet (my) another mega project about Python and Django developer experience (DX).
 
   > Software development is more than just writing code (c)
 
@@ -18,7 +18,7 @@ TOC
     - [Popular Python and Django Packages](#popular-python-and-django-packages)
     - [Testing Tools](#testing-tools)
     - [Code Quality, Formatting, and Linting Tools](#code-quality-formatting-and-linting-tools)
-  - [Setup and Walkthrough notes](#setup-and-walkthrough-notes)
+  - [Setup and walkthrough notes](#setup-and-walkthrough-notes)
     - [General approach](#general-approach)
     - [Local setup](#local-setup)
     - [Containerized setup](#containerized-setup)
@@ -33,19 +33,20 @@ TOC
 
 ### Best Practices
 
-- [environs](https://github.com/sloria/environs) - Used for managing environment variables
+- [django-environ](https://github.com/joke2k/django-environ) - Used for managing environment variables
 - [Docker](https://www.docker.com/) - Docker Compose for development and a multi-stage Dockerfile for production ready Docker image
-- [pip-tools](https://github.com/jazzband/pip-tools/) - Used to maintain python requirements
-- [just](https://github.com/casey/just) - Popular tool for running common commands in containers (`make` equivalent)
+- [pip-tools](https://github.com/jazzband/pip-tools/) - Used to maintain Python requirements
 - `make` - with 'classic' Makefile for commands within virtualenv
+- [just](https://github.com/casey/just) - Popular tool for running common commands in containers (`make` equivalent)
+- ...
 
 ### Popular Python and Django Packages
 
-- [Django 4.2](https://www.djangoproject.com/) - Latest version of Django
+- Latest version of Django 4.2
 - [Celery](http://docs.celeryproject.org/) - Most popular task runner for running asynchronous tasks in the background
-- [Custom User Model][custom_user_model] - Custom user model so that the user model can be easily extended
-- [Django Allauth](http://www.intenct.nl/projects/django-allauth/) - The most popular package for adding authentication
-  workflows to a Django project
+- [Custom User Model](https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#specifying-a-custom-user-model) - Custom user model so that the user can be easily extended
+- [Django Allauth](http://www.intenct.nl/projects/django-allauth/) - The most popular package for adding authentication workflows to a Django project
+- ...
 
 ### Testing Tools
 
@@ -53,6 +54,7 @@ TOC
 - [Pytest Django](https://pytest-django.readthedocs.io/en/latest/index.html) - A Django plugin for Pytest
 - [Pytest-cov](https://pytest-cov.readthedocs.io) - Adds code coverage to tests
 - [pre-commit](https://pre-commit.com/) - A framework for managing and maintaining multi-language pre-commit hooks
+- ...
 
 ### Code Quality, Formatting, and Linting Tools
 
@@ -61,24 +63,24 @@ TOC
 - [Mypy](http://mypy-lang.org/) - Python Type checking
 - [typeguard](https://pypi.org/project/typeguard/) - Run-time type checker for Python
 - [dj Lint](https://djlint.com/) - Automatic Django HTML template formatting and linting
-- [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar) - A toolbar for debugging and
-  optimizing Django queries
-- django-silk
+- [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar) - A toolbar for debugging and optimizing Django queries
+- [django-silk](https://github.com/jazzband/django-silk) - Silky smooth profiling for Django
 - [Bandit](https://bandit.readthedocs.io/) - Automatic security checking
 - [pip-audit](https://pypi.org/project/pip-audit/) - tool for scanning Python environments for known vulnerabilities
 - [Stylelint](https://stylelint.io/) - Automatic Sass formatting and linting
 - [Eslint](https://eslint.org/) - Automatic Javascript formatting and linting
+- ...
 
-## Setup and Walkthrough notes
+## Setup and walkthrough notes
 
-### General approach
+### General recommendations
 
-1. Lock(pin) Python dependencies with `pip-tools` in requirements/dev.in and requirements/prod.in
-2. Split settings into settings/base + development + production + test.py >> update `manage.py`
-3. Separate environmental variables from code: django-environ (or other lib, e.g. `python-decouple`)
+1. Split and lock(pin) project dependencies: define them in dev.in / prod.in files and lock with `pip-tools` in dev*/prod.txt files
+2. Split settings into base.py + development|local.py + production.py + test.py >> update `manage.py` accordingly.
+3. Separate environmental variables from code: use django-environ (or other lib, e.g. `python-decouple`)
 4. Generate **NEW** SECRET_KEY **before!** applying migrations
-5. Update code according to `manage.py check --deploy` recommendations and <https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/>
-6. For production environment - install Gunicorn and nginx
+5. Update code according to `manage.py check --deploy` recommendations and [deployment checklist](https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/)
+6. For production environment - install production-grade WSGI and web/reverse server, like Gunicorn and nginx
 
 ### Local setup
 
@@ -89,9 +91,9 @@ TOC
    3. pgAdmin
    4. Your preferable way
 3. Create/activate a virtualenv
-   1. `python3.10 -m venv <virtual env path>`
+   1. `python3.11 -m venv <virtual env path>`
    2. `source <virtual env path>/bin/activate`
-   3. `pip install -r requirements.local.txt`
+   3. `pip install -r requirements/dev_lock.txt`
 4. Install pre-commit hook: `pre-commit install`
 5. Set the environment variables:
    1. Create/copy `.env` file in the root of your project with all needed variables: `mv env.example.local .env` | `cp env.example.local .env`
@@ -210,11 +212,7 @@ python manage.py startapp <app_name>
 cp .env.example .env
 
 export SECRET_KEY=$(python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')
-cat > .env <<EOF
-DEBUG=on
-SECRET_KEY='$SECRET_KEY'
-DATABASE_URL=postgres://postgres:@db:5432/postgres
-INTERNAL_IPS=127.0.0.1,0.0.0.0
+cat > .env <<EOFsoliloquy.0.0.0
 EOF
 
 python manage.py migrate
@@ -316,7 +314,6 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 - <https://fabien.herfray.org/posts/mastering-postgres-indexes-in-10-minutes/>
 - <https://vglushko.github.io/development/2022/12/22/python-dev-environment.html>/home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/conftest.py /home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/__init__.py
 - <https://timonweb.com/django/https-django-development-server-ssl-certificate/>
-- ...
 
 ### Documentation, cheatsheet
 

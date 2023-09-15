@@ -24,8 +24,6 @@ env = environ.Env()
 env.read_env(str(BASE_DIR / ".env"))
 
 # -------------------------  GENERAL  ---------------------------------------
-DEBUG = env.bool("DJANGO_DEBUG", default=False)
-
 LANGUAGE_CODE = "en-us"
 
 SITE_ID = 1
@@ -348,7 +346,7 @@ CORS_URLS_REGEX = r"^/api/.*$"
 
 # By Default swagger ui is available only to admin user(s). You can change permission classes to change that
 SPECTACULAR_SETTINGS = {
-    "TITLE": "price-navigator API",
+    "TITLE": "Hello Python on steroids API",
     "DESCRIPTION": "Documentation of API endpoints of hello-python-on-steroids",
     "VERSION": "1.0.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],

@@ -1,11 +1,22 @@
 {% extends "layouts/_base.html" %}
 
 {% block title %}
-  About
+About
 {% endblock title %}
 
 
 
 {% block content %}
 <h1>About page</h1>
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>{{ SITE_NAME }}</h2>
+    <p>You've successfully set up a Django base site. Start Coding!</p>
+    <p>
+      <a href="https://docs.djangoproject.com/en/dev/" class="btn btn-primary btn-lg" target="_blank">Read Django
+        documentation »</a>
+    </p>
+  </div>
+</div>
 {% endblock content %}

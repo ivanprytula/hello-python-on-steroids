@@ -2,7 +2,8 @@ from .base import *  # noqa
 from .base import env
 
 # -------------------------  GENERAL  ---------------------------------------
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG", default=True)
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
@@ -91,4 +92,3 @@ SECURE_HSTS_PRELOAD = True
 # python manage.py check --deploy
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-DEBUG = False

@@ -1,6 +1,5 @@
 {% load static i18n %}
 
-
 {% load django_browser_reload %}
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@
     {% block title %}
     {% endblock title %}
 
-    {% if SITE_NAME %} - {{ SITE_NAME }}{% endif %}
+    {% if SITE_NAME %} | {{ SITE_NAME }}{% endif %}
   </title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
