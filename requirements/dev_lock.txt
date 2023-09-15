@@ -555,8 +555,8 @@ django==4.2.5 \
     #   django-timezone-field
     #   djangorestframework
     #   drf-spectacular
-django-allauth==0.56.0 \
-    --hash=sha256:53f2f38307d7a5446774b23e8ede55df8b96226ccc493cd5b66780b06cf4dc07
+django-allauth==0.56.1 \
+    --hash=sha256:347044c4e268e085ef4b4b26ea5fdc9d40576872d55e630f1736e1c9a7761529
     # via -r requirements/prod.in
 django-browser-reload==1.11.0 \
     --hash=sha256:ce9576bd31562fda01dd8fca73e07696a9a1c7138d2aee084abfb7315dc633a4 \
