@@ -1,0 +1,25 @@
+
+<hr/>
+<h3>Django Hello, World 5 Different Ways</h3>
+
+<ul>
+  <li><a href="{% url 'pages:index' %}">/index</a> - "Traditional" approach: dedicated app for static pages and inherited TemplateView</li>
+  <li><a href="{% url 'pages:about' %}">/about</a> - ... </li>
+</ul>
+
+<ul>
+  <li><a href="{% url 'pages:fbv-index' %}">/fbv-index</a> - function-based view</li>
+</ul>
+
+<ul>
+  <li><a href="{% url 'pages:no-template' %}">/no-template</a> - bare HttpResponse</li>
+</ul>
+
+
+<ul>
+  <li><a href="{% url 'pages:no-app' %}">/no-app</a> - no app (bare TemplateView)</li>
+</ul>
+
+<ul>
+  <li><a href="{% url 'pages:index-detail' 1 %}">/index/1</a> - models</li>
+</ul>

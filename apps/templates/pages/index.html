@@ -11,6 +11,12 @@
   <div class="jumbotron">
     <div class="container">
 
+      <h1>Project urls for quick overview</h1>
+
+      {% block project_urls %}
+      {% include "components/project-urls.html" %}
+      {% endblock project_urls %}
+
     </div>
   </div>
 {% endblock content %}

@@ -21,3 +21,10 @@ from django.urls import reverse
 #     def __str__(self):
 #         """String for representing the MyModelName object (in Admin site etc.)."""
 #         return self.my_field_name
+
+
+class Post(models.Model):
+    text = models.TextField()
+
+    def __str__(self):
+        return self.text[:50]

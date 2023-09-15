@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n humanize %}
 
 {% load django_browser_reload %}
 
@@ -20,6 +20,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Hello Python on steroids">
   <meta name="author" content="Ivan Prytula">
+
+  {% comment "target attr options" %}
+    _blank 	Opens the linked document in a new window or tab
+    _self 	Opens the linked document in the same frame as it was clicked (this is default)
+  {% endcomment %}
+
+  <base href="https://{{ BASE_URL }}:{{ BASE_PORT }}/">
 
   <link rel="shortcut icon" type="image/png" href="{% static 'images/favicons/favicon.ico' %}">
 

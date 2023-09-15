@@ -19,7 +19,7 @@ TOC
     - [Testing Tools](#testing-tools)
     - [Code Quality, Formatting, and Linting Tools](#code-quality-formatting-and-linting-tools)
   - [Setup and walkthrough notes](#setup-and-walkthrough-notes)
-    - [General approach](#general-approach)
+    - [General recommendations](#general-recommendations)
     - [Local setup](#local-setup)
     - [Containerized setup](#containerized-setup)
     - [Django "classic" set of commands](#django-classic-set-of-commands)
