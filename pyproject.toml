@@ -17,6 +17,7 @@ markers = [
     "foo",
     "bar",
     # conftest.py reorders tests moving slow ones to the end of the list
+    "e2e", # marks tests as e2e (deselect with '-m "not e2e"')
     "slow",
 ]
 

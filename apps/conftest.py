@@ -1,3 +1,5 @@
+import random
+
 import pytest
 from rest_framework.test import APIClient
 
@@ -15,6 +17,23 @@ ADMIN_PASSWORD = "events-@pp-@dm1N"
 @pytest.fixture(autouse=True)
 def media_storage(settings, tmpdir):
     settings.MEDIA_ROOT = tmpdir.strpath
+
+
+@pytest.fixture
+def random_name():
+    names = ["John", "Jane", "Marry"]
+    return random.choice(names)
+
+
+def test_fixture_usage(random_name):
+    assert random_name
+
+
+@pytest.fixture
+def some_fixture():
+    # do something before your test
+    yield  # test runs here
+    # do something after your test
 
 
 @pytest.fixture

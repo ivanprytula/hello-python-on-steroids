@@ -24,6 +24,7 @@ TOC
     - [Containerized setup](#containerized-setup)
     - [Django "classic" set of commands](#django-classic-set-of-commands)
     - [Settings notes](#settings-notes)
+  - [Modern TDD](#modern-tdd)
   - [Used resources](#used-resources)
     - [Tutorials](#tutorials)
     - [Documentation/cheatsheet](#documentation-cheatsheet)
@@ -301,8 +302,24 @@ SECURE_SSL_REDIRECT = True
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
+
+# Works when Django involved in serving user-uploaded files
 SECURE_CONTENT_TYPE_NOSNIFF = True
 ```
+
+## Modern TDD
+
+<https://testdriven.io/blog/modern-tdd/>
+
+## Takeaways
+
+1. There's no single right way to test your software. Nonetheless, it's easier to test logic when it's not coupled with your database. You can use the Active Record pattern with commands and queries (CQRS) to help with this.
+2. Focus on the business value of your code.
+3. Don't test methods just to say they're tested. You need working software not tested methods. TDD is just a tool to deliver better software faster and more reliable. Similar can be said for code coverage: Try to keep it high but don't add tests just to have 100% coverage.
+4. A test is valuable only when it protects you against regressions, allows you to refactor, and provides you fast feedback. Therefore, you should strive for your tests to resemble a pyramid shape (50% unit, 30% integration, 20% e2e). Although, in simple applications, it may look more like a house (40% unit, 40% integration, 20% e2e), which is fine.
+5. The faster you notice regressions, the faster you can intercept and correct them. The faster you correct them, the shorter the development cycle. To speed up feedback, you can use pytest markers to exclude e2e and other slow tests during development. You can run them less frequently.
+6. Use mocks only when necessary (like for third-party HTTP APIs). They make your test setup more complicated and your tests overall less resistant to refactoring. Plus, they can result in false positives.
+7. Once again, your tests are a liability not an asset; they should cover your software's behavior but don't over test.
 
 ## Used resources
 
