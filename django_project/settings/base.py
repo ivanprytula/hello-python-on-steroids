@@ -147,6 +147,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "apps.common.middleware.RequestLogMiddleware",
 ]
 
 
@@ -189,7 +190,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "users.context_processors.allauth_settings",
+                "apps.users.context_processors.allauth_settings",
                 "apps.common.context_processors.site_name",
             ],
         },

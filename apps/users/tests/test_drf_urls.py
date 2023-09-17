@@ -4,8 +4,8 @@ from apps.users.models import User
 
 
 def test_user_detail(user: User):
-    assert reverse("api:user-detail", kwargs={"email": user.email}) == f"/api/users/{user.email}/"
-    assert resolve(f"/api/users/{user.email}/").view_name == "api:user-detail"
+    assert reverse("api:user-detail", kwargs={"pk": user.pk}) == f"/api/users/{user.pk}/"
+    assert resolve(f"/api/users/{user.pk}/").view_name == "api:user-detail"
 
 
 def test_user_list():

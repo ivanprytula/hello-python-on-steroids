@@ -1,6 +1,10 @@
 # flake8: noqa
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
+
+User = get_user_model()
+
 
 # class MyModelName(models.Model):
 #     """A typical class defining a model, derived from the Model class."""
@@ -24,7 +28,8 @@ from django.urls import reverse
 
 
 class Post(models.Model):
-    text = models.TextField()
+    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    text = models.TextField(max_length=140)
 
     def __str__(self):
         return self.text[:50]

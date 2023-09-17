@@ -20,7 +20,7 @@ from apps.users.managers import UserManager
 
 class User(AbstractUser):
     """
-    Default custom user model for price-navigator.
+    Default custom user model for the project.
     If adding fields that need to be filled at user signup,
     check forms.SignupForm and forms.SocialSignupForms accordingly.
     """
@@ -29,7 +29,7 @@ class User(AbstractUser):
     name = CharField("Name of User", blank=True, max_length=255)
     first_name = None  # type: ignore
     last_name = None  # type: ignore
-    email = EmailField("email address", unique=True)
+    email = EmailField("Email address", unique=True)
     username = None  # type: ignore
 
     USERNAME_FIELD = "email"

@@ -38,7 +38,7 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path("users/", include("users.urls", namespace="users")),
+    path("users/", include("apps.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
     # https://adamj.eu/tech/2020/02/10/robots-txt/
@@ -48,9 +48,10 @@ urlpatterns = [
     ),
 ]
 
-api_version = "api/v1"
 
 # API URLS
+api_version = "api"
+
 urlpatterns += [
     # health check, exception, email-admins
     path(f"{api_version}/", include("apps.common.urls", namespace="common")),

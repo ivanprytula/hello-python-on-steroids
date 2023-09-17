@@ -36,7 +36,7 @@ class TestUserUpdateView:
 
         view.request = request
 
-        assert view.get_success_url() == f"/users/{user.name}/"
+        assert view.get_success_url() == f"/users/{user.pk}/"
 
     def test_get_object(self, user: User, rf: RequestFactory):
         view = UserUpdateView()
@@ -76,7 +76,7 @@ class TestUserRedirectView:
 
         view.request = request
 
-        assert view.get_redirect_url() == f"/users/{user.name}/"
+        assert view.get_redirect_url() == f"/users/{user.pk}/"
 
 
 class TestUserDetailView:
@@ -84,7 +84,7 @@ class TestUserDetailView:
         request = rf.get("/fake-url/")
         request.user = UserFactory()
 
-        response = user_detail_view(request, name=user.name)
+        response = user_detail_view(request, pk=user.pk)
 
         assert response.status_code == 200
 
@@ -92,7 +92,7 @@ class TestUserDetailView:
         request = rf.get("/fake-url/")
         request.user = AnonymousUser()
 
-        response = user_detail_view(request, name=user.name)
+        response = user_detail_view(request, pk=user.pk)
         login_url = reverse(settings.LOGIN_URL)
 
         assert isinstance(response, HttpResponseRedirect)

@@ -4,8 +4,8 @@ from apps.users.models import User
 
 
 def test_detail(user: User):
-    assert reverse("users:detail", kwargs={"email": user.email}) == f"/users/{user.email}/"
-    assert resolve(f"/users/{user.email}/").view_name == "users:detail"
+    assert reverse("users:detail", kwargs={"pk": user.pk}) == f"/users/{user.pk}/"
+    assert resolve(f"/users/{user.pk}/").view_name == "users:detail"
 
 
 def test_update():

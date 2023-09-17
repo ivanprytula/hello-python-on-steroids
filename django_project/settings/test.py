@@ -11,6 +11,8 @@ SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
     default="my-secret-key",
 )
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#test-runner
 TEST_RUNNER = "django.test.runner.DiscoverRunner"  # Default
 
@@ -44,3 +46,7 @@ CACHES = {
 }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+
+# django-debug-toolbar & django-browser-reload
+
+INSTALLED_APPS += ["django_browser_reload"]  # noqa: F405

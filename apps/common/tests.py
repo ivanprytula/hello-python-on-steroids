@@ -13,7 +13,7 @@ User = get_user_model()
 @pytest.mark.django_db(transaction=True)
 def test_request_log_middleware(client):
     header = {"HTTP_X_FORWARDED_FOR": "123.123.123.123"}
-    client.get("/posts", follow=True, **header)
+    client.get("api/users/", follow=True, **header)
 
     assert RequestLog.objects.all().count() == 1
 
@@ -25,6 +25,6 @@ def test_request_log_middleware(client):
 
     client.force_login(user)
 
-    client.get("admin/core/requestlog/")
+    client.get("admin/common/requestlog/")
 
     assert RequestLog.objects.all().count() == 2

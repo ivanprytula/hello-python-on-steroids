@@ -19,10 +19,7 @@ def media_storage(settings, tmpdir):
 
 @pytest.fixture
 def user(db) -> User:
-    return UserFactory(
-        name=CUSTOMER_NAME,
-        password=CUSTOMER_PASSWORD,
-    )
+    return UserFactory()
 
 
 @pytest.fixture

@@ -1,7 +1,7 @@
 # ==== Pytest ====
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "--ds=django_project.settings.test --reuse-db --cov-config=coverage.ini"
+addopts = "--ds=django_project.settings.test --create-db --cov-config=coverage.ini -v --tb=short"
 python_files = [
     "tests.py",
     "test_*.py",

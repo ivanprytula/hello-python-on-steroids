@@ -1,16 +1,16 @@
-"""
-Generally speaking,
-- SimpleTestCase is used when a database is unnecessary
-- TestCase is used when you want to test the database
-- TransactionTestCase is helpful to directly test database transactions
-- LiveServerTestCase launches a live server thread for testing with browser-based tools like Selenium.
-"""
+# """
+# Generally speaking,
+# - SimpleTestCase is used when a database is unnecessary
+# - TestCase is used when you want to test the database
+# - TransactionTestCase is helpful to directly test database transactions
+# - LiveServerTestCase launches a live server thread for testing with browser-based tools like Selenium.
+# """
 
-from django.test import SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse
 
 
-class IndexpageTests(SimpleTestCase):
+class IndexpageTests(TestCase):
     def test_url_exists_at_correct_location(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
@@ -28,7 +28,7 @@ class IndexpageTests(SimpleTestCase):
         self.assertContains(response, "<h1>Homepage</h1>")
 
 
-class AboutpageTests(SimpleTestCase):
+class AboutpageTests(TestCase):
     def test_url_exists_at_correct_location(self):
         response = self.client.get("/about/")
         self.assertEqual(response.status_code, 200)
