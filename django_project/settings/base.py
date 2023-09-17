@@ -263,7 +263,7 @@ LOGGING = {
         "file": {
             "level": "DEBUG",
             "class": "logging.FileHandler",
-            "filename": "./logs/verbose_debug.log",
+            "filename": "./logs/debug_lvl.log",
             "formatter": "simple",
         },
     },

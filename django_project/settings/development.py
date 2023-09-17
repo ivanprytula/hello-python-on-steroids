@@ -31,16 +31,17 @@ EMAIL_BACKEND = env(
 # after Django's `SecurityMiddleware` so that security redirects are still performed.
 # See: https://whitenoise.readthedocs.io
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")  # noqa: F405
-INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F405
+INSTALLED_APPS += ["whitenoise.runserver_nostatic"]  # noqa: F405
 WHITENOISE_INDEX_FILE = True
 
-# STATIC
-# ------------------------
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+# STATIC
+# ------------------------
 
 # django-debug-toolbar & django-browser-reload
 # ------------------------------------------------------------------------------

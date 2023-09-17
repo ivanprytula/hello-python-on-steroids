@@ -113,14 +113,18 @@ mig:
 colstat:
 	python manage.py collectstatic --no-input
 
-runs:  ## HTTP
+runs:  ## standard HTTP + option: whitenoise (if enabled, run collectstatic first)
 	python manage.py runserver
 
-runsgu:
-	gunicorn django_project.wsgi
+runs-plus:  ## using the Werkzeug debugger + faster reload on files changes with watchdog
+	python manage.py runserver_plus
 
-runs-plus: ## HTTPS with the help of mkcert
+runs-ssl: ## HTTPS with the help of Werkzeug and mkcert
 	python manage.py runserver_plus --cert-file cert.pem --key-file key.pem
+
+run-gu:  ## HTTPS. Strongly recommended using Gunicorn behind a proxy server
+	gunicorn --timeout 1000 --workers 2 --bind 127.0.0.1:8000 --log-level debug --certfile cert.pem  --keyfile key.pem django_project.wsgi
+
 
 pre-commit-all:
 	pre-commit run --all-files
