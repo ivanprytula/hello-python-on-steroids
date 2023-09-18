@@ -31,6 +31,9 @@ docs/_build/
 # mypy
 .mypy_cache/
 
+# pytest
+.pytest_cache/
+
 # Linters, formatters
 .ruff_cache/
 

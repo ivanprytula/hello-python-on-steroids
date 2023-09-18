@@ -1,0 +1,35 @@
+# !! YAML doesn’t allow literal tab characters for indentation !!
+
+# ========== Canonical configuration for the services ==========
+
+# The order of precedence (highest to lowest) is as follows:
+
+# - Set using docker compose run -e in the CLI
+# - Substituted from your shell
+# - Set using the environment attribute in the Compose file
+# - Use of the --env-file argument in the CLI
+# - Use of the env_file attribute in the Compose file
+# - Set using an .env file placed at base of your project directory
+# - Set in a container image in the ENV directive.
+# - Having any ARG or ENV setting in a Dockerfile evaluates only if there is no Docker Compose entry for environment, env_file or run --env.
+services:
+  web: &web
+    build:
+      context: .
+      dockerfile: ./compose/local/web/Dockerfile
+    image: ${WEB_IMAGE_PREFIX}_local_web
+    container_name: ${WEB_IMAGE_PREFIX}_local_web
+    ports:
+      - 8000:8000
+    command: /start
+
+  db:
+    build:
+      context: .
+      dockerfile: ./compose/production/db/Dockerfile
+    image: ${WEB_IMAGE_PREFIX}_production_db
+    container_name: ${WEB_IMAGE_PREFIX}_local_db
+
+  redis:
+    image: redis:6
+    container_name: ${WEB_IMAGE_PREFIX}_local_redis

@@ -100,7 +100,6 @@ django-settings-module = "django_project.settings.test"
 # ==== PyLint ====
 [tool.pylint.MASTER]
 load-plugins=["pylint_django"]
-# django-settings-module = "django_project.settings.development"
 
 [tool.pylint.FORMAT]
 max-line-length = 119

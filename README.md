@@ -36,7 +36,7 @@ TOC
 
 - [django-environ](https://github.com/joke2k/django-environ) - Used for managing environment variables
 - [direnv](https://direnv.net/) - local environment manager (handy alternative)
-- [Docker](https://www.docker.com/) - Docker Compose for development and a multi-stage Dockerfile for production ready Docker image
+- [Docker](https://www.docker.com/) - Docker Compose for local and a multi-stage Dockerfile for production ready Docker image
 - [pip-tools](https://github.com/jazzband/pip-tools/) - Used to maintain Python requirements
 - `make` - with 'classic' Makefile for commands within virtualenv
 - [just](https://github.com/casey/just) - Popular tool for running common commands in containers (`make` equivalent)
@@ -235,7 +235,7 @@ npm run dev
 ```python
 # "webpack_loader",
 # django-webpack-loader (base.py)
-# django-webpack-loader (development.py)
+# django-webpack-loader (local.py)
 # django-webpack-loader (test.py)
 
 # in base.html:
@@ -273,7 +273,7 @@ STORAGES = {
 }
 
 # 4. Use a Content-Delivery Network
-# 5. Using WhiteNoise in development
+# 5. Using WhiteNoise in local dev
 INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F405
 # 6. Index Files
 

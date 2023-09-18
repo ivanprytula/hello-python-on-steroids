@@ -36,5 +36,5 @@ plugins:
           setup_commands:
             - "import os"
             - "import django"
-            - "os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project.settings.development')"
+            - "os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project.settings.local')"
             - "django.setup()"

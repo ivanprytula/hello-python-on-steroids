@@ -145,6 +145,9 @@ docs-serve:
 ####################################################################################################################
 # Setup containers
 
+dcconf:
+	docker compose config
+
 build: ## Build project with compose
 	docker compose -f docker-compose.yml -f docker-compose.dev.yml build
 
@@ -188,7 +191,7 @@ lint:  ## Lint project code.
 ci: isort format type lint pytest
 
 ####################################################################################################################
-# Development
+# Local dev
 
 sh-django:
 	docker exec -ti price_navigator_local_django bash
