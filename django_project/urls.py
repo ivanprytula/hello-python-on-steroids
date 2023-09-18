@@ -52,27 +52,67 @@ urlpatterns = [
 # API URLS
 api_version = "api"
 
-urlpatterns += [
-    # DRF auth token
-    path("auth-token/", obtain_auth_token),
-    # API base url for ViewSets-based apps
-    path(f"{api_version}/", include("django_project.api_router")),
-    # General/test endpoints: health check, test exception, email-admins
-    path(f"{api_version}/", include("apps.common.urls", namespace="common")),
-    # blog
-    path(f"{api_version}/", include("apps.posts.urls", namespace="posts")),
-    path(f"{api_version}/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+api_docs_urls = [
     path(
-        f"{api_version}/schema/swagger-ui",
-        SpectacularSwaggerView.as_view(url_name="api-schema"),
-        name="swagger-ui",
-    ),
-    path(
-        f"{api_version}/schema/redoc/",
-        SpectacularRedocView.as_view(url_name="api-schema"),
-        name="redoc",
+        f"{api_version}/",
+        include(
+            [
+                path("schema/", SpectacularAPIView.as_view(), name="api-schema"),
+                path(
+                    "schema/swagger-ui",
+                    SpectacularSwaggerView.as_view(url_name="api-schema"),
+                    name="swagger-ui",
+                ),
+                path(
+                    "schema/redoc/",
+                    SpectacularRedocView.as_view(url_name="api-schema"),
+                    name="redoc",
+                ),
+            ]
+        ),
     ),
 ]
+
+api_apps_urls = [
+    path(
+        f"{api_version}/",
+        include(
+            [
+                path("", include("django_project.api_router")),
+                # General/test endpoints: health check, test exception, email-admins
+                path("", include("apps.common.urls", namespace="common")),
+                # # blog
+                path("posts/", include("apps.posts.urls", namespace="posts")),
+                path("products/", include("apps.products.urls", namespace="products")),
+            ]
+        ),
+    ),
+]
+
+urlpatterns += [*api_docs_urls, *api_apps_urls]
+
+# urlpatterns += [
+#     # DRF auth token
+#     path("auth-token/", obtain_auth_token),
+#     # API base url for ViewSets-based apps
+#     path(f"{api_version}/", include("django_project.api_router")),
+#     # General/test endpoints: health check, test exception, email-admins
+#     path(f"{api_version}/", include("apps.common.urls", namespace="common")),
+#     # blog
+#     path(f"{api_version}/", include("apps.posts.urls", namespace="posts")),
+#
+# path(f"{api_version}/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+# path(
+#     f"{api_version}/schema/swagger-ui",
+#     SpectacularSwaggerView.as_view(url_name="api-schema"),
+#     name="swagger-ui",
+# ),
+# path(
+#     f"{api_version}/schema/redoc/",
+#     SpectacularRedocView.as_view(url_name="api-schema"),
+#     name="redoc",
+# ),
+# ]
 
 # static files
 urlpatterns += static(

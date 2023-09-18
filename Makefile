@@ -125,6 +125,8 @@ runs-ssl: ## HTTPS with the help of Werkzeug and mkcert
 run-gu-ssl:  ## HTTPS. Strongly recommended using Gunicorn behind a proxy server
 	gunicorn --timeout 1000 --workers 2 --bind 127.0.0.1:8000 --log-level debug --certfile cert.pem  --keyfile key.pem django_project.wsgi
 
+show-urls:
+	python manage.py show_urls --format=table
 
 pre-commit-all:
 	pre-commit run --all-files
