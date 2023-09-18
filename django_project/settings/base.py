@@ -104,6 +104,7 @@ LOCAL_APPS = [
     # "apps.users.apps.UsersConfig",
     "apps.users",
     "apps.pages",
+    "apps.posts",
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -222,7 +223,6 @@ EMAIL_BACKEND = env(
 EMAIL_TIMEOUT = 5
 
 # --------------------------- ADMIN -------------------------------------------
-ADMIN_URL = "admin/"
 ADMINS = [("""Ivan Prytula""", "ivan-prytula@example.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS

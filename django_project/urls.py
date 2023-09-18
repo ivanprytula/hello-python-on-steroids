@@ -53,12 +53,14 @@ urlpatterns = [
 api_version = "api"
 
 urlpatterns += [
-    # health check, exception, email-admins
-    path(f"{api_version}/", include("apps.common.urls", namespace="common")),
-    # API base url for ViewSets-based apps
-    path(f"{api_version}/", include("django_project.api_router")),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
+    # API base url for ViewSets-based apps
+    path(f"{api_version}/", include("django_project.api_router")),
+    # General/test endpoints: health check, test exception, email-admins
+    path(f"{api_version}/", include("apps.common.urls", namespace="common")),
+    # blog
+    path(f"{api_version}/", include("apps.posts.urls", namespace="posts")),
     path(f"{api_version}/schema/", SpectacularAPIView.as_view(), name="api-schema"),
     path(
         f"{api_version}/schema/swagger-ui",

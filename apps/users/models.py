@@ -1,16 +1,3 @@
-"""
-Django coding style which provides a recommended ordering for models:
-- choices
-- database fields
-- custom manager attributes
-- Meta
-- def __str__()
-- def save()
-- def get_absolute_url()
-- custom methods
-"""
-
-
 from django.contrib.auth.models import AbstractUser
 from django.db.models import CharField, EmailField
 from django.urls import reverse
