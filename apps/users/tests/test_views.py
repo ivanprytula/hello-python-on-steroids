@@ -12,7 +12,7 @@ import pytest
 from apps.users.forms import UserAdminChangeForm
 from apps.users.models import User
 from apps.users.tests.factories import UserFactory
-from apps.users.views import UserRedirectView, UserUpdateView, user_detail_view
+from apps.users.views import UserDetailView, UserRedirectView, UserUpdateView
 
 pytestmark = pytest.mark.django_db
 
@@ -83,6 +83,7 @@ class TestUserDetailView:
     def test_authenticated(self, user: User, rf: RequestFactory):
         request = rf.get("/fake-url/")
         request.user = UserFactory()
+        user_detail_view = UserDetailView.as_view()
 
         response = user_detail_view(request, pk=user.pk)
 
@@ -91,6 +92,7 @@ class TestUserDetailView:
     def test_not_authenticated(self, user: User, rf: RequestFactory):
         request = rf.get("/fake-url/")
         request.user = AnonymousUser()
+        user_detail_view = UserDetailView.as_view()
 
         response = user_detail_view(request, pk=user.pk)
         login_url = reverse(settings.LOGIN_URL)

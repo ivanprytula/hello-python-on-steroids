@@ -35,6 +35,7 @@ TOC
 ### Best Practices
 
 - [django-environ](https://github.com/joke2k/django-environ) - Used for managing environment variables
+- [direnv](https://direnv.net/) - local environment manager (handy alternative)
 - [Docker](https://www.docker.com/) - Docker Compose for development and a multi-stage Dockerfile for production ready Docker image
 - [pip-tools](https://github.com/jazzband/pip-tools/) - Used to maintain Python requirements
 - `make` - with 'classic' Makefile for commands within virtualenv
@@ -85,7 +86,7 @@ TOC
 
 ### Local setup
 
-1. Start [status|stop] PostgreSQL server: `sudo systemctl start postgresql` or `sudo service postgresql start`
+1. Start [status|stop] PostgreSQL server: `sudo systemctl start postgresql` | `sudo service postgresql start` or if in hurry...use SQLite default fallback option.
 2. Create a new PostgreSQL database with ...
    1. PostgreSQL client `psql` (_steps below_)
    2. Shell CLI [createdb](https://www.postgresql.org/docs/current/app-createdb.html)
@@ -99,9 +100,9 @@ TOC
 5. Set the environment variables:
    1. Create/copy `.env` file in the root of your project with all needed variables: `mv env.example.local .env` | `cp env.example.local .env`
       1. then `export DJANGO_READ_DOT_ENV_FILE=True`
-      2. or use a local environment manager like [direnv](https://direnv.net/) (NB: you also need `.envrc` file)
+      2. or use a `direnv` (NB: you also need `.envrc` file)
 6. 'Dry run' w/o applying migrations - just spin off _classic_ `./manage.py runserver` or `./manage.py runserver_plus` (w/ watchdog and Werkzeug debugger)
-7. Or skip prev step and do 'full run': `./manage.py migrate` -> `./manage.py runserver 0.0.0.0:8000`
+7. Or skip prev step and do 'full run': `./manage.py migrate` -> `./manage.py runserver 127.0.0.1:8000`
 8. Visit <http://127.0.0.1:8000/>
 9. Setting up your users:
    1. **normal user account**: just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
