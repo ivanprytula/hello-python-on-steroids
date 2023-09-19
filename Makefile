@@ -55,17 +55,7 @@ colors: ## show all the colors
 	@echo "${LIGHTPURPLE}LIGHTPURPLE${RESET}"
 	@echo "${PURPLE}PURPLE${RESET}"
 	@echo "${BLUE}BLUE${RESET}"
-	@echo "${WHITE}WHITE${RESET}"
-
-job1:  ## help for job 1
-	@echo "job 1 started"
-	@echo "run stuff for target1"
-	@echo "job 1 finished"
-
-job%:  ## help for job with wildcard
-	@echo "job $@"
-
-help:
+	@echo "${WHITE}WHITE${RESET}"$(var)
 	@echo ""
 	@echo "    ${BLACK}:: ${RED}Self-documenting Makefile${RESET} ${BLACK}::${RESET}"
 	@echo ""
@@ -89,16 +79,16 @@ help:
 # Dependencies management
 
 install-deps-dev:
-	pip install -r requirements/dev_lock.txt
+	pip install -r requirements/local.txt
 
 lock-deps-dev:
-	pip-compile --upgrade --generate-hashes --strip-extras --verbose --output-file requirements/dev_lock.txt requirements/dev.in
+	pip-compile --upgrade --generate-hashes --strip-extras --verbose --output-file requirements/local.txt requirements/local.in
 
 lock-deps-prod:
-	pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/prod_lock.txt requirements/prod.in
+	pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/production.txt requirements/production.in
 
 audit-deps-dev:
-	pip-audit --requirement requirements/dev.in
+	pip-audit --requirement requirements/local.in
 
 pcau:
 	pre-commit autoupdate
@@ -174,19 +164,19 @@ clean: ## Clean Reset project containers and volumes with compose
 # Testing, auto formatting, type checks, & Lint checks
 
 pytest: ## Run project tests
-	docker exec -it price_navigator_local_django pytest -p no:warnings -v
+	docker exec -it ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web pytest -p no:warnings -v
 
 format: ## Format project code.
-	docker exec price_navigator_local_django python -m black --config pyproject.toml .
+	docker exec ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web python -m black --config pyproject.toml .
 
 isort: ## Sort project imports.
-	docker exec price_navigator_local_django isort .
+	docker exec ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web isort .
 
 type:  ## Static typing check
-	docker exec price_navigator_local_django mypy --ignore-missing-imports price_navigator/
+	docker exec ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web mypy --ignore-missing-imports price_navigator/
 
 lint:  ## Lint project code.
-	docker exec price_navigator_local_django flake8
+	docker exec ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web flake8
 
 ci: isort format type lint pytest
 
@@ -194,19 +184,19 @@ ci: isort format type lint pytest
 # Local dev
 
 sh-django:
-	docker exec -ti price_navigator_local_django bash
+	docker exec -ti ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web bash
 
 sh-db:
-	docker exec -ti price_navigator_local_postgres bash
+	docker exec -ti ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_db bash
 
 verify-db-health:
-	docker exec -ti price_navigator_local_postgres psql -U postgres -c 'SELECT 1;'
+	docker exec -ti ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_db psql -U postgres -c 'SELECT 1;'
 
 psql-db:
-	docker exec -ti price_navigator_local_postgres psql -U postgres
+	docker exec -ti ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_db psql -U postgres
 
 check-migrations-state:
-	docker compose  -f docker-compose.yml -f docker-compose.dev.yml exec django python manage.py showmigrations -l --verbosity 2
+	docker compose  -f docker-compose.yml -f docker-compose.dev.yml exec web python manage.py showmigrations -l --verbosity 2
 
 createsuperuser:
-	docker compose  -f docker-compose.yml -f docker-compose.dev.yml exec django python manage.py createsuperuser
+	docker compose  -f docker-compose.yml -f docker-compose.dev.yml exec web python manage.py createsuperuser

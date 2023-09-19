@@ -17,8 +17,8 @@ services:
     build:
       context: .
       dockerfile: ./compose/local/web/Dockerfile
-    image: ${WEB_IMAGE_PREFIX}_local_web
-    container_name: ${WEB_IMAGE_PREFIX}_local_web
+    image: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web
+    container_name: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web
     ports:
       - 8000:8000
     command: /start
@@ -27,9 +27,9 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/db/Dockerfile
-    image: ${WEB_IMAGE_PREFIX}_production_db
-    container_name: ${WEB_IMAGE_PREFIX}_local_db
+    image: ${PROJECT_IMAGE_PREFIX}_production_db
+    container_name: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_db
 
   redis:
     image: redis:6
-    container_name: ${WEB_IMAGE_PREFIX}_local_redis
+    container_name: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_redis

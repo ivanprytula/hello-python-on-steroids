@@ -77,7 +77,7 @@ TOC
 
 ### General recommendations
 
-1. Split and lock(pin) project dependencies: define them in dev.in / prod.in files and lock with `pip-tools` in dev*/prod.txt files
+1. Split and lock(pin) project dependencies: define them in local.in / production.in files and lock with `pip-tools` in local*/production.txt files
 2. Split settings into base.py + development|local.py + production.py + test.py >> update `manage.py` accordingly.
 3. Separate environmental variables from code: use django-environ (or other lib, e.g. `python-decouple`)
 4. Generate **NEW** SECRET_KEY **before!** applying migrations

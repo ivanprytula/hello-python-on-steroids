@@ -12,15 +12,11 @@ services:
 
   db:
     volumes:
-      - django_embrace_local_db_data:/var/lib/postgresql/data
+      - ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_db_data:/var/lib/postgresql/data
     env_file:
       - ./.envs/.local/.db/.env
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
-      timeout: 3s
-      retries: 5
-
-
-volumes:
-  django_embrace_local_db_data:
+      timeout: 30s
+      retries: 3
