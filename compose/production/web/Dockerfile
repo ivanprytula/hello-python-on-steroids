@@ -1,5 +1,5 @@
 # 0. define an alias for the specific python version used in this file.
-FROM python:3.11.4-slim-bullseye as python-base
+FROM python:3.11.5-slim-bullseye as python-base
 LABEL maintainer="Ivan Prytula <ivanprytula87@gmail.com>"
 
 # 1.0 Python build stage

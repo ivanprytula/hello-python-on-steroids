@@ -22,7 +22,7 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.9.1
     hooks:
       - id: black
 
@@ -44,7 +44,7 @@ repos:
         args: ["-r", "-lll", "-ii", "-x", "tests/"]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.287
+    rev: v0.0.290
     hooks:
       - id: ruff
         # args: [ --fix, --exit-non-zero-on-fix ]
@@ -93,7 +93,7 @@ repos:
         args: ['--target-version', '4.2']
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.10.1
+    rev: v3.11.1
     hooks:
       - id: pyupgrade
         args: [--py310-plus]

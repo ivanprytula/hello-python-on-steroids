@@ -73,7 +73,7 @@ colors: ## show all the colors
 
 
 # --------------------------------------------------------------------------------------
-# Project's commands (LOCAL setup)
+# Project's commands (local setup)
 # --------------------------------------------------------------------------------------
 
 # Dependencies management
@@ -138,10 +138,7 @@ docs-serve:
 # Project's commands (containerized setup)
 # --------------------------------------------------------------------------------------
 
-####################################################################################################################
-# Setup containers
-
-dcconf:
+dconf:
 	docker compose config
 
 build: ## Build project with compose
@@ -189,7 +186,7 @@ ci: isort format type lint pytest
 ####################################################################################################################
 # Local dev
 
-sh-django:
+sh-web:
 	docker exec -ti ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web bash
 
 sh-db:

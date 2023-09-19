@@ -38,7 +38,7 @@ def db_connection_status(request):
 
 
 def version(request):
-    return JsonResponse({"version": settings.SOURCE_TAG, "foo": "bar"})
+    return JsonResponse({"version": settings.SEM_VER_TAG, "foo": "bar"})
 
 
 # @api_view(["POST"])

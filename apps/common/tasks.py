@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 
 from celery import shared_task
 
-from django_project.celery_app import app
+from django_project.celery import app
 
 
 @shared_task

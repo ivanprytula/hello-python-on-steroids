@@ -1,5 +1,5 @@
 # 0. define an alias for the specific python version used in this file.
-FROM python:3.11.4-slim-bullseye as python-base
+FROM python:3.11.5-slim-bullseye as python-base
 LABEL maintainer="Ivan Prytula <ivanprytula87@gmail.com>"
 
 # 1.0 Python build stage
@@ -19,7 +19,7 @@ COPY ./requirements .
 
 # 1.3 Create Python Dependency and Sub-Dependency Wheels.
 # NB: check this: https://pythonwheels.com/
-RUN pip wheel --wheel-dir /usr/src/app/wheels  \
+RUN pip wheel --require-hashes --no-deps --wheel-dir /usr/src/app/wheels  \
   -r ${BUILD_ENVIRONMENT}.txt
 
 
@@ -56,7 +56,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
 
 # 2.4 use wheels to install Python dependencies
-RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
+RUN pip install --no-deps --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 	&& rm -rf /wheels/
 
 # 2.5 Copy files to be run on containers start up
@@ -66,15 +66,15 @@ RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
 
-COPY ./compose/local/django/celery/worker/start /start-celeryworker
+COPY ./compose/local/web/celery/worker/start /start-celeryworker
 RUN sed -i 's/\r$//g' /start-celeryworker
 RUN chmod +x /start-celeryworker
 
-COPY ./compose/local/django/celery/beat/start /start-celerybeat
+COPY ./compose/local/web/celery/beat/start /start-celerybeat
 RUN sed -i 's/\r$//g' /start-celerybeat
 RUN chmod +x /start-celerybeat
 
-COPY ./compose/local/django/celery/flower/start /start-flower
+COPY ./compose/local/web/celery/flower/start /start-flower
 RUN sed -i 's/\r$//g' /start-flower
 RUN chmod +x /start-flower
 

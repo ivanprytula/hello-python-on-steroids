@@ -34,19 +34,19 @@ TOC
 
 ### Best Practices
 
+- [Custom User Model](https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#specifying-a-custom-user-model) - Custom user model so that the user can be easily extended
 - [django-environ](https://github.com/joke2k/django-environ) - Used for managing environment variables
-- [direnv](https://direnv.net/) - local environment manager (handy alternative)
+- [direnv](https://direnv.net/) - Local environment manager (handy alternative)
 - [Docker](https://www.docker.com/) - Docker Compose for local and a multi-stage Dockerfile for production ready Docker image
 - [pip-tools](https://github.com/jazzband/pip-tools/) - Used to maintain Python requirements
 - `make` - with 'classic' Makefile for commands within virtualenv
 - [just](https://github.com/casey/just) - Popular tool for running common commands in containers (`make` equivalent)
-- ...
+- [django-browser-reload](https://github.com/adamchainz/django-browser-reload) - Automatically reload browser in development
 
 ### Popular Python and Django Packages
 
 - Latest version of Django 4.2
 - [Celery](http://docs.celeryproject.org/) - Most popular task runner for running asynchronous tasks in the background
-- [Custom User Model](https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#specifying-a-custom-user-model) - Custom user model so that the user can be easily extended
 - [Django Allauth](http://www.intenct.nl/projects/django-allauth/) - The most popular package for adding authentication workflows to a Django project
 - ...
 
@@ -250,8 +250,8 @@ npm run dev
 ```python
 # See: https://whitenoise.readthedocs.io
 
+# 0. pip install whitenoise
 # 1. Make sure staticfiles is configured correctly
-# pip install whitenoise
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"  # Url from which static files are served
 # {% load static %}
@@ -265,6 +265,7 @@ MIDDLEWARE = [
 ]
 
 # 3. Add compression and caching support
+# On Django 4.2+:
 STORAGES = {
     # ...
     "staticfiles": {

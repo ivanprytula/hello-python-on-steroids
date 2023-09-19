@@ -14,7 +14,8 @@ django-coverage-plugin
 
 # For runserver_plus
 django-extensions
-Werkzeug[watchdog]
+Werkzeug
+watchfiles
 pyOpenSSL
 
 # Dependencies management

@@ -28,7 +28,7 @@ LANGUAGE_CODE = "en-us"
 
 SITE_ID = 1
 SITE_NAME = "Hello Python on steroids"
-SOURCE_TAG = env.str("SOURCE_TAG", default="-")
+SEM_VER_TAG = env.str("SEM_VER_TAG", default="-")
 
 TIME_ZONE = "UTC"
 USE_I18N = True
@@ -90,12 +90,12 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     # ... include the providers you want to enable:
     # https://django-allauth.readthedocs.io/en/latest/installation.html
-    "django_celery_beat",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
     "drf_spectacular",
     "django_filters",
+    "django_celery_beat",
     # "webpack_loader",
 ]
 LOCAL_APPS = [

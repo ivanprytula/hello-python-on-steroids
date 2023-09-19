@@ -46,6 +46,7 @@ docs/_build/
 
 ### -------------------- Project dirs --------------------------
 logs/
+postgres*
 
 diagrams/
 # To ignore the "directory" only in the root of your Git repository - add leading slash

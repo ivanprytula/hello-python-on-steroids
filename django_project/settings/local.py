@@ -34,7 +34,7 @@ ADMIN_URL = "admin/"
 # after Django's `SecurityMiddleware` so that security redirects are still performed.
 # See: https://whitenoise.readthedocs.io
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")  # noqa: F405
-INSTALLED_APPS += ["whitenoise.runserver_nostatic"]  # noqa: F405
+INSTALLED_APPS.insert(0, "whitenoise.runserver_nostatic")  # noqa: F405
 WHITENOISE_INDEX_FILE = True
 
 STORAGES = {

@@ -5,18 +5,23 @@ services:
       - .:/app:z
     env_file:
       - ./.envs/.local/.web/.env
-      - ./.envs/.local/.db/.env
-    depends_on:
-      db:
-        condition: service_healthy
 
   db:
     volumes:
-      - ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_db_data:/var/lib/postgresql/data
+      - ${ENVIRONMENT}_db_data:/var/lib/postgresql/data
+      - ${ENVIRONMENT}_db_data_backups:/backups
     env_file:
       - ./.envs/.local/.db/.env
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 30s
-      retries: 3
+
+  celeryworker:
+    <<: *web
+
+  celerybeat:
+    <<: *web
+
+  flower:
+    <<: *web
+
+volumes:
+  local_db_data:
+  local_db_data_backups:
