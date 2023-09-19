@@ -78,9 +78,6 @@ colors: ## show all the colors
 
 # Dependencies management
 
-install-deps-dev:
-	pip install -r requirements/local.txt
-
 lock-deps-dev:
 	pip-compile --upgrade --generate-hashes --strip-extras --verbose --output-file requirements/local.txt requirements/local.in
 
@@ -90,10 +87,19 @@ lock-deps-prod:
 audit-deps-dev:
 	pip-audit --requirement requirements/local.in
 
+audit-deps-prod:
+	pip-audit --requirement requirements/production.in
+
+install-deps-dev:
+	pip install --require-hashes --no-deps -r requirements/local.txt
+
+install-deps-prod:
+	pip install -r requirements/production.txt
+
 pcau:
 	pre-commit autoupdate
 
-# manage.py commands and extras from django_extensions
+# manage.py commands + extras from django_extensions
 mm:
 	python manage.py makemigrations
 

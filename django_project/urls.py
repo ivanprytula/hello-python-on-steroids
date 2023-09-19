@@ -57,14 +57,14 @@ api_docs_urls = [
         f"{api_version}/",
         include(
             [
-                path("schema/", SpectacularAPIView.as_view(), name="api-schema"),
+                path("schema", SpectacularAPIView.as_view(), name="api-schema"),
                 path(
                     "schema/swagger-ui",
                     SpectacularSwaggerView.as_view(url_name="api-schema"),
                     name="swagger-ui",
                 ),
                 path(
-                    "schema/redoc/",
+                    "schema/redoc",
                     SpectacularRedocView.as_view(url_name="api-schema"),
                     name="redoc",
                 ),
