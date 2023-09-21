@@ -38,7 +38,7 @@ services:
       timeout: 30s
       retries: 3
 
-  broker:
+  redis:
     image: redis:6
     container_name: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_redis
 
@@ -50,7 +50,7 @@ services:
     image: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_celeryworker:${SEM_VER_TAG}
     container_name: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_celeryworker
     depends_on:
-      - broker
+      - redis
       - db
     ports: []
     command: /start-celeryworker
@@ -63,7 +63,7 @@ services:
     image: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_celerybeat:${SEM_VER_TAG}
     container_name: ${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_celerybeat
     depends_on:
-      - broker
+      - redis
       - db
     ports: []
     command: /start-celerybeat
