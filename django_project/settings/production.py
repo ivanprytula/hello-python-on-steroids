@@ -15,7 +15,7 @@ CACHES = {
         "LOCATION": env("REDIS_URL"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # Mimicing memcache behavior.
+            # Mimicking memcache behavior.
             "IGNORE_EXCEPTIONS": True,
         },
     }

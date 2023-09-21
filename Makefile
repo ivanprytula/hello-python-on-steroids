@@ -138,32 +138,29 @@ docs-serve:
 # Project's commands (containerized setup)
 # --------------------------------------------------------------------------------------
 
-dconf:
+dconf:  ## Parse, resolve and render Compose file in canonical format
 	docker compose config
 
-build: ## Build project with compose
+build: ## Build or rebuild Compose services
 	docker compose -f docker-compose.yml -f docker-compose.dev.yml build
 
-up: ## Run project with compose
+up: ## Create and start containers
 	docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 
-stop:
+stop:  ## Stop Compose services (running containers)
 	docker compose -f docker-compose.yml -f docker-compose.dev.yml stop
 
-start:
+start:  ## Start Compose services
 	docker compose -f docker-compose.yml -f docker-compose.dev.yml start
 
-down:
+down:  ## Stop and remove containers, networks
 	docker compose -f docker-compose.yml -f docker-compose.dev.yml down
 
 .PHONY: clean
-clean: ## Clean Reset project containers and volumes with compose
+clean: ## Clean project containers and volumes with compose
 	docker compose down -v --remove-orphans | true
 	docker compose rm -f | true
-	docker volume rm price-navigator-warehouse price-navigator-backups-dir-for-warehouse | true
 
-
-####################################################################################################################
 # Testing, auto formatting, type checks, & Lint checks
 
 pytest: ## Run project tests
@@ -183,7 +180,6 @@ lint:  ## Lint project code.
 
 ci: isort format type lint pytest
 
-####################################################################################################################
 # Local dev
 
 sh-web:
