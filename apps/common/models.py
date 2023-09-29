@@ -25,6 +25,9 @@ class MyModelName(models.Model):
     my_field_name = models.CharField(
         verbose_name="some common field name", max_length=20, help_text="Enter field documentation"
     )
+    # null is database-related. When a field has null=True it can store a database entry as NULL, meaning no value.
+
+    # blank is validation-related, if blank=True then a form will allow an empty value, whereas if blank=False then a value is required.
 
     # All 3 are equivalent!
     # full_name = models.CharField(max_length=100)

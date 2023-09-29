@@ -10,6 +10,7 @@ Wrapping API views
 """
 
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import connection
 from django.http import JsonResponse
 
@@ -51,7 +52,8 @@ def version(request):
 #     raise APIException("Exception message from the API server")
 
 
-class TriggerExceptionView(APIView):
+# TIQ Mixins are called in order from left to right
+class TriggerExceptionView(LoginRequiredMixin, APIView):
     authentication_classes = []
     permission_classes = []
     serializer_class = None

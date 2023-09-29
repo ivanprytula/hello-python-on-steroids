@@ -343,3 +343,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 - [jacobian, co-creator of Django](<https://jacobian.org/>)
 - ...
+
+### Tech interview questions
+
+TIQ#1 / TIQ#N  - tag to mark code examples for interview preparation
