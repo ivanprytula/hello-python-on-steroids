@@ -86,13 +86,13 @@ lock-deps-dev:
 lock-deps-prod:
 	pip-compile --upgrade --generate-hashes --strip-extras --output-file requirements/production.txt requirements/production.in
 
-audit-deps-dev:
+audit-deps-local:
 	pip-audit --requirement requirements/local.in
 
 audit-deps-prod:
 	pip-audit --requirement requirements/production.in
 
-install-deps-dev:
+install-deps-local:
 	pip install --require-hashes --no-deps -r requirements/local.txt
 
 install-deps-prod:
