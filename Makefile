@@ -56,6 +56,8 @@ colors: ## show all the colors
 	@echo "${PURPLE}PURPLE${RESET}"
 	@echo "${BLUE}BLUE${RESET}"
 	@echo "${WHITE}WHITE${RESET}"$(var)
+
+help:
 	@echo ""
 	@echo "    ${BLACK}:: ${RED}Self-documenting Makefile${RESET} ${BLACK}::${RESET}"
 	@echo ""

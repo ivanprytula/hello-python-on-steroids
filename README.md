@@ -331,7 +331,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 - <https://www3.nd.edu/~zxu2/acms60212-40212/Makefile.pdf>
 - <https://cheat.readthedocs.io/en/latest/index.html>
 - <https://fabien.herfray.org/posts/mastering-postgres-indexes-in-10-minutes/>
-- <https://vglushko.github.io/development/2022/12/22/python-dev-environment.html>/home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/conftest.py /home/ivanp/VSCodeProjects/ci-cd-pipe-flow/apps/__init__.py
+- <https://vglushko.github.io/development/2022/12/22/python-dev-environment.html>
 - <https://timonweb.com/django/https-django-development-server-ssl-certificate/>
 
 ### Documentation, cheatsheet
