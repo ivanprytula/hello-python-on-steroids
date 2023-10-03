@@ -419,9 +419,9 @@ djangorestframework==3.14.0 \
     # via
     #   -r production.in
     #   drf-spectacular
-drf-spectacular==0.26.4 \
-    --hash=sha256:8f5a8f87353d1bb8dcb3f3909b7109b2dcbe1d91f3e069409cf322963e140bd6 \
-    --hash=sha256:afeccc6533dcdb4e78afbfcc49f3c5e9c369aeb62f965e4d1a43b165449c147a
+drf-spectacular==0.26.5 \
+    --hash=sha256:aee55330a774ba8a9cbdb125714d1c9ee05a8aafd3ce3be8bfd26527649aeb44 \
+    --hash=sha256:c0002a820b11771fdbf37853deb371947caf0159d1afeeffe7598e964bc1db94
     # via -r production.in
 flower==2.0.1 \
     --hash=sha256:5ab717b979530770c16afb48b50d2a98d23c3e9fe39851dcf6bc4d01845a02a0 \
