@@ -28,7 +28,7 @@ flower~=2.0  # https://github.com/mher/flower
 django-celery-beat~=2.5  # https://github.com/celery/django-celery-beat
 redis~=5.0  # https://github.com/redis/redis-py
 hiredis~=2.2  # needed for Django's native cache and sessions
-django-redis~=5.3  # https://github.com/jazzband/django-redis
+django-redis~=5.4  # https://github.com/jazzband/django-redis
 
 # Databases
 psycopg~=3.1
