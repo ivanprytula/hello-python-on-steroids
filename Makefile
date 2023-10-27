@@ -80,7 +80,7 @@ help:
 
 # Dependencies management
 
-lock-deps-dev:
+lock-deps-local:
 	pip-compile --upgrade --generate-hashes --strip-extras --verbose --output-file requirements/local.txt requirements/local.in
 
 lock-deps-prod:
