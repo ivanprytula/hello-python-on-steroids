@@ -17,7 +17,7 @@
     "postcss": "^8.4.31",
     "postcss-loader": "^7.0.2",
     "postcss-preset-env": "^9.2.0",
-    "sass": "~1.68.0",
+    "sass": "~1.69.5",
     "sass-loader": "^13.2.0",
     "webpack": "^5.89.0",
     "webpack-bundle-tracker": "^2.0.0",
