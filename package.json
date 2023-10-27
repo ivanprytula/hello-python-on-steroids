@@ -5,7 +5,7 @@
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
     "@popperjs/core": "^2.10.2",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.4.16",
     "babel-loader": "^9.1.2",
     "bootstrap": "^5.3.2",
     "css-loader": "^6.5.1",
