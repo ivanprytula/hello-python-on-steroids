@@ -308,7 +308,9 @@ build==1.0.3 \
 cachecontrol==0.13.1 \
     --hash=sha256:95dedbec849f46dda3137866dc28b9d133fc9af55f5b805ab1291833e4457aa4 \
     --hash=sha256:f012366b79d2243a6118309ce73151bf52a38d4a5dac8ea57f09bd29087e506b
-    # via pip-audit
+    # via
+    #   cachecontrol
+    #   pip-audit
 celery==5.3.4 \
     --hash=sha256:1e6ed40af72695464ce98ca2c201ad0ef8fd192246f6c9eac8bba343b980ad34 \
     --hash=sha256:9023df6a8962da79eb30c0c84d5f4863d9793a466354cc931d7f72423996de28
@@ -645,8 +647,8 @@ django==4.2.6 \
     #   django-timezone-field
     #   djangorestframework
     #   drf-spectacular
-django-allauth==0.58.0 \
-    --hash=sha256:40ad5c2ae78757261fc1628a94bb67416f91565f578e592d5906948b59682a5c
+django-allauth==0.58.1 \
+    --hash=sha256:485db513f1794f5636ae38a78e9414e8818ce076770b75a6f8a003ab3a32b8fa
     # via -r production.in
 django-browser-reload==1.12.0 \
     --hash=sha256:2dc98c752b55d22db9c11fbc0274c16160ce4dcd67ef0ef294135ab57d711435 \
@@ -1481,7 +1483,9 @@ pygments==2.16.1 \
 pyjwt==2.8.0 \
     --hash=sha256:57e28d156e3d5c10088e0c68abb90bfac3df82b40a71bd0daa20c65ccd5c23de \
     --hash=sha256:59127c392cc44c2da5bb3192169a91f429924e17aff6534d70fdc02ab3e04320
-    # via django-allauth
+    # via
+    #   django-allauth
+    #   pyjwt
 pylint==3.0.2 \
     --hash=sha256:0d4c286ef6d2f66c8bfb527a7f8a629009e42c99707dec821a03e1b51a4c1496 \
     --hash=sha256:60ed5f3a9ff8b61839ff0348b3624ceeb9e6c2a92c514d81c9cc273da3b6bcda
@@ -1994,6 +1998,7 @@ urllib3==2.0.7 \
     #   botocore
     #   requests
     #   selenium
+    #   urllib3
 vine==5.0.0 \
     --hash=sha256:4c9dceab6f76ed92105027c49c823800dd33cacce13bdedc5b914e3514b7fb30 \
     --hash=sha256:7d3b1624a953da82ef63462013bbd271d3eb75751489f9807598e8f340bd637e
@@ -2134,7 +2139,9 @@ wheel==0.41.2 \
 whitenoise==6.6.0 \
     --hash=sha256:8998f7370973447fac1e8ef6e8ded2c5209a7b1f67c1012866dbcd09681c3251 \
     --hash=sha256:b1f9db9bf67dc183484d760b99f4080185633136a273a03f6436034a41064146
-    # via -r production.in
+    # via
+    #   -r production.in
+    #   whitenoise
 wsproto==1.2.0 \
     --hash=sha256:ad565f26ecb92588a3e43bc3d96164de84cd9902482b130d0ddbaa9664a85065 \
     --hash=sha256:b9acddd652b585d75b20477888c56642fdade28bdfd3579aa24a4d2c037dd736
