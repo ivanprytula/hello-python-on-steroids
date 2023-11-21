@@ -375,8 +375,8 @@ django==4.2.7 \
     #   django-timezone-field
     #   djangorestframework
     #   drf-spectacular
-django-allauth==0.58.0 \
-    --hash=sha256:40ad5c2ae78757261fc1628a94bb67416f91565f578e592d5906948b59682a5c
+django-allauth==0.58.2 \
+    --hash=sha256:b2ad19223e561ef333a54d6c03d52144b0148ce79822eaf708424a0d829f24c8
     # via -r production.in
 django-celery-beat==2.5.0 \
     --hash=sha256:ae460faa5ea142fba0875409095d22f6bd7bcc7377889b85e8cab5c0dfb781fe \
