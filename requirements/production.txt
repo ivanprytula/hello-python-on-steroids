@@ -323,9 +323,9 @@ click-repl==0.3.0 \
     --hash=sha256:17849c23dba3d667247dc4defe1757fff98694e90fe37474f3feebb69ced26a9 \
     --hash=sha256:fb7e06deb8da8de86180a33a9da97ac316751c094c6899382da7feeeeb51b812
     # via celery
-crispy-bootstrap5==0.7 \
-    --hash=sha256:0745a67199619149b7feca87dab7a45664876ed50fb582b38fd2aeb3f8a8d869 \
-    --hash=sha256:f3ff1ef5cb379fe80b1b02e245008f276444098a4bdb8d855bed84c623798a85
+crispy-bootstrap5==2023.10 \
+    --hash=sha256:9b5a6c9880f37cd32aa678c0d7576ae60b3e502c444c8712e582f8bd91659afb \
+    --hash=sha256:f16c44f1997310e5a89c0cf230402e7111cc1f942f64fb7e44603958b89b06a1
     # via -r production.in
 cron-descriptor==1.4.0 \
     --hash=sha256:b6ff4e3a988d7ca04a4ab150248e9f166fb7a5c828a85090e75bcc25aa93b4dd
