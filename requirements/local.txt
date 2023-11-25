@@ -1525,9 +1525,9 @@ pytest-repeat==0.9.3 \
     --hash=sha256:26ab2df18226af9d5ce441c858f273121e92ff55f5bb311d25755b8d7abdd8ed \
     --hash=sha256:ffd3836dfcd67bb270bec648b330e20be37d2966448c4148c4092d1e8aba8185
     # via -r local.in
-pytest-xdist==3.4.0 \
-    --hash=sha256:3a94a931dd9e268e0b871a877d09fe2efb6175c2c23d60d56a6001359002b832 \
-    --hash=sha256:e513118bf787677a427e025606f55e95937565e06dfaac8d87f55301e57ae607
+pytest-xdist==3.5.0 \
+    --hash=sha256:cbb36f3d67e0c478baa57fa4edc8843887e0f6cfc42d677530a36d7472b32d8a \
+    --hash=sha256:d075629c7e00b611df89f490a5063944bee7a4362a5ff11c7cc7824a03dfce24
     # via -r local.in
 python-crontab==3.0.0 \
     --hash=sha256:6d5ba3c190ec76e4d252989a1644fcb233dbf53fbc8fceeb9febe1657b9fb1d4 \
