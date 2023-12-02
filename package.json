@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/core": "^7.23.2",
-    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-env": "^7.23.5",
     "@popperjs/core": "^2.10.2",
     "autoprefixer": "^10.4.16",
     "babel-loader": "^9.1.2",
