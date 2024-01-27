@@ -49,13 +49,13 @@ billiard==4.1.0 \
     --hash=sha256:0f50d6be051c6b2b75bfbc8bfd85af195c5739c281d3f5b86a5640c65563614a \
     --hash=sha256:1ad2eeae8e28053d729ba3373d34d9d6e210f6e4d8bf0a9c64f92bd053f1edf5
     # via celery
-boto3==1.29.4 \
-    --hash=sha256:ca9b04fc2c75990c2be84c43b9d6edecce828960fc27e07ab29036587a1ca635 \
-    --hash=sha256:d1135647309b89376a014d21407aabfa322998206175f2297def812bf4d824a9
+boto3==1.34.29 \
+    --hash=sha256:34b2b404bd2bec869ec2fc6aeeeeb884c72a9b895e2c7716b95381ab8deb9069 \
+    --hash=sha256:50776db195a73533f4f2c9d000c69f9d0e9fb9810f9f81584adc283e9516ad0d
     # via -r production.in
-botocore==1.32.4 \
-    --hash=sha256:3ee73c0d93bdb944d0c46772f08f09cdcf25ef58bd86962e6f4a24e531198bfa \
-    --hash=sha256:6bfa75e28c9ad0321cefefa51b00ff233b16b2416f8b95229796263edba45a39
+botocore==1.34.29 \
+    --hash=sha256:34223fdb8ebd47d1fce5724bb1bcb164e81853ea9ca532b50639c749fc347458 \
+    --hash=sha256:44d918b91a1c1085d99266f8bf6ecc087c8a73a8efbb8e829f0c2dcd1ddf9963
     # via
     #   boto3
     #   s3transfer
@@ -787,9 +787,9 @@ rpds-py==0.10.6 \
     # via
     #   jsonschema
     #   referencing
-s3transfer==0.7.0 \
-    --hash=sha256:10d6923c6359175f264811ef4bf6161a3156ce8e350e705396a7557d6293c33a \
-    --hash=sha256:fd3889a66f5fe17299fe75b82eae6cf722554edca744ca5d5fe308b104883d2e
+s3transfer==0.10.0 \
+    --hash=sha256:3cdb40f5cfa6966e812209d0994f2a4709b561c88e90cf00c2696d2df4e56b2e \
+    --hash=sha256:d0c8bbf672d5eebbe4e57945e23b972d963f07d82f661cabf678a5c88831595b
     # via boto3
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
