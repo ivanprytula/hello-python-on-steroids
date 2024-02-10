@@ -1423,9 +1423,9 @@ prompt-toolkit==3.0.41 \
     # via
     #   click-repl
     #   ipython
-psycopg==3.1.13 \
-    --hash=sha256:1253010894cfb64e2da4556d4eff5f05e45cafee641f64e02453be849c8f7687 \
-    --hash=sha256:e6d047ce16950651d6e26c7c19ca57cc42e1d4841b58729f691244baeee46e30
+psycopg==3.1.18 \
+    --hash=sha256:31144d3fb4c17d78094d9e579826f047d4af1da6a10427d91dfcfb6ecdf6f12b \
+    --hash=sha256:4d5a0a5a8590906daa58ebd5f3cfc34091377354a1acced269dd10faf55da60e
     # via -r production.in
 ptyprocess==0.7.0 \
     --hash=sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35 \
