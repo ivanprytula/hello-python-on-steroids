@@ -347,3 +347,9 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 ### Tech interview questions
 
 TIQ#1 / TIQ#N  - tag to mark code examples for interview preparation
+
+### Infrastructure model
+![Infrastructure main model](.infragenie/infrastructure_main_model.svg)
+- [${PROJECT_IMAGE_PREFIX}_${ENVIRONMENT}_web component model](.infragenie/${project_image_prefix}_${environment}_web_component_model.svg)
+
+---
